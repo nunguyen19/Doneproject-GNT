@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>NƯỚC HOA</title>
+<link rel="stylesheet" href="stylenuochoa.css">
+<link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- banner -->
+            <div class="banner col-12">
+                <img src="https://img.upanh.tv/2024/10/24/BANG-QC-DAU-TRANG-FIGMA-3.png" alt="" class="img-fluid d-block">
+            </div>
+        </div>
+        <div class="row">
+            <!-- logo -->
+            <div class="col-3 col-md-2">
+                <a href="./home.html">
+					<img src="https://img.upanh.tv/2024/10/24/Logo.png" alt="" class="float-start img-fluid" style="margin-left: 25px; height: 110px;">
+				</a>
+            </div>
+            <!-- search box -->
+            <div class="col-md-4 col-6">
+                <form class="search-wrapper">
+                    <input type="search" placeholder="Tìm kiếm" name="search" class="search-input hide-placeholder">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search text-white"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- contact -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="phone-container">
+                    <i class="fa fa-phone"></i>
+                    <div class="d-none d-xl-inline-block">
+                        <p>Hỗ trợ khách hàng<br>
+                            +1 6506671441</p>
+                    </div>
+                </div>
+            </div>
+            <!-- register/login -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="login-container">
+                    <a href="./register.html"><i class="fa fa-user"></i></a>
+                    <div class="d-none d-xl-inline-block">
+                        <a href="./register.html">Đăng Ký</a>
+                        <a href="./login.html" class="d-block">Đăng Nhập</a>
+                    </div>
+                </div>
+            </div>
+            <!-- cart -->
+            <div class="col-md-2 col-1 py-3">
+                <button id="cartButton" class="btn btn-outline-dark">
+                    <div class="cart-container">
+                        <i class="fa fa-cart-plus mt-2"></i>
+                        <span id="cartCount" class="badge bg-danger position-absolute translate-middle me-5">0</span>
+                        <p class="d-none d-lg-block text-black ms-2 pt-4">Giỏ hàng</p>
+                    </div> 
+                </button>
+                <div id="cartModal" class="modal fade bgmodal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Giỏ hàng của bạn</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="cartItems"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="w-100 d-flex justify-content-between">
+                                <span class="cart-total">Tổng tiền: 0₫</span>
+                                <button id="checkoutButton">Thanh toán</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- navigation bar -->
+            <nav class="navbar navbar-expand-md">
+                <button class="navbar-toggler ms-5 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="text-dark d-none d-xxl-inline">Danh mục sản phẩm</span>
+                </button>
+                <div class="collapse navbar-collapse  ms-5" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <!-- danh mục sản phẩm -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fa fa-bars d-none d-sm-inline-block"></i>
+                                <span>DANH MỤC SẢN PHẨM</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./chamsocda.html">Chăm sóc da</a></li>
+                                <li><a class="dropdown-item" href="./trangdiem.html">Trang điểm</a></li>
+                                <li><a class="dropdown-item" href="./chamsoccothe.html">Chăm sóc cơ thể</a></li>
+                                <li><a class="dropdown-item" href="./moi.html">Môi</a></li>
+                            </ul>
+                        </li>
+                        <!-- các danh mục mở rộng -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="./sanphambanchay.html">SẢN PHẨM BÁN CHẠY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./flashsale.htm">FLASH SALE - CHỚP NHOÁNG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./home.html#categories7">TIN TỨC & LÀM ĐẸP</a>
+                        </li> 
+                        <!-- mở rộng contact - login -->
+                        <li class="nav-item phone-cont d-md-none d-block">
+                            <i class="fa fa-phone"></i>
+                            <p>+1 6506671441</p>
+                        </li>
+                        <li class="nav-item login-cont d-md-none d-block">
+                            <i class="fa fa-user"></i>
+                            <div class="d-inline">
+                                <a href="./register.html">Đăng Ký
+                                    <span style="border-right: 2px solid black;"></span>
+                                </a>
+                                <a href="./login.html">Đăng Nhập</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid perfume-banner-container">
+        <div class="row">
+            <div class="">
+                <img src="https://img.upanh.tv/2024/11/25/snapedit_1732469813423.png" alt="banner nước hoa" class="img-fluid d-block">
+            </div>
+        </div>
+    </div>
+    <div class="container-main-perfume p-5 pt-3">
+    <h1 class="container-title-perfume fs-1 text-center">NƯỚC HOA</h1>
+    <div class="container-text-perfume" style="padding-bottom: 200px; padding-top: 120px;" >
+        <!-- Sản phẩm 1 -->
+        <div class="container-product-card-perfume justify-content-around align-content-center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://img.upanh.tv/2024/11/25/nuochoa1.webp" alt="Maison Francis Kurkdjian A La Rose" class="img-fluid border-2 rounded-4">
+                    </div>
+                    <div class="col-md-8 perfume-product-info">
+                        <h4 class="text-center">Maison Francis Kurkdjian A La Rose</h4>
+                        <div class="row perfume-details d-flex justify-content-between align-content-center text-center">
+                            <p class=" col-md-3 perfume-price">750.000đ</p>
+                            <p class=" col-md-4 perfume-size">35ml</p>
+                        </div>
+                        <div class="d-flex justify-content-center justify-content-md-between">
+                            <div class=""></div>
+                            <span class="perfume-freeship">FREESHIP</span>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <!--hết sp1-->
+        <div class="container-product-card-perfume justify-content-around align-content-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://img.upanh.tv/2024/11/25/maison-francis-kurkdjian-baccarat-rouge-540-edp_292050969cc7413d91de196433f9b9f0_master012c9d4ec39cea38.jpg" alt="Maison Francis Kurkdjian A La Rose" class="img-fluid border-2 rounded-4">
+                </div>
+                <div class="col-md-8 perfume-product-info">
+                    <h4 class="text-center">Maison Francis Baccarat Rouge 540 EDP</h4>
+                    <div class="row perfume-details d-flex justify-content-between align-content-center text-center">
+                        <p class="col-md-3 perfume-price">500.000đ</p>
+                        <p class="col-md-4 perfume-size">15ml</p>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-between">
+                        <div class=""></div>
+                        <span class="perfume-freeship">FREESHIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card 2 -->
+        <div class="container-product-card-perfume justify-content-around align-content-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://img.upanh.tv/2024/11/25/nuoc-hoa-jean-paul-gaultier-scandal-edp-2-300x300f7b53e456f266e83.jpg" alt="Maison Francis Kurkdjian A La Rose" class="img-fluid border-2 rounded-4">
+                </div>
+                <div class="col-md-8 perfume-product-info">
+                    <h4 class="text-center">Jean Paul Gaultier Scandal EDP</h4>
+                    <div class="row perfume-details d-flex justify-content-between align-content-center text-center">
+                        <p class="col-md-3 perfume-price">499.000đ</p>
+                        <p class="col-md-4 perfume-size">25ml</p>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-between">
+                        <div class=""></div>
+                        <span class="perfume-freeship">FREESHIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card 3 -->
+        <div class="container-product-card-perfume justify-content-around align-content-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://img.upanh.tv/2024/11/25/peche-cardinal-parfums-mdcid21d7101ee9f8082.jpg" alt="Maison Francis Kurkdjian A La Rose" class="img-fluid border-2 rounded-4">
+                </div>
+                <div class="col-md-8 perfume-product-info">
+                    <h4 class="text-center">Parfums MDCI Paris Peche Cardinal EDP</h4>
+                    <div class="row perfume-details d-flex justify-content-between align-content-center text-center">
+                        <p class="col-md-3 perfume-price">999.000đ</p>
+                        <p class="col-md-4 perfume-size">40ml</p>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-between">
+                        <div class=""></div>
+                        <span class="perfume-freeship">FREESHIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card 4 -->
+        <div class="container-product-card-perfume justify-content-around align-content-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://img.upanh.tv/2024/11/25/nuoc-hoa-chanel-coco-noirea43d0544341dca0.webp" alt="Maison Francis Kurkdjian A La Rose" class="img-fluid border-2 rounded-4">
+                </div>
+                <div class="col-md-8 perfume-product-info">
+                    <h4 class="text-center">Chanel Coco Noir EDP</h4>
+                    <div class="row perfume-details d-flex justify-content-between align-content-center text-center">
+                        <p class="col-md-3 perfume-price">999.000đ</p>
+                        <p class="col-md-4 perfume-size">45ml</p>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-between">
+                        <div class=""></div>
+                        <span class="perfume-freeship">FREESHIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end card 5.product-card-perfume -->
+        <div class="container-product-card-perfume justify-content-around align-content-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://img.upanh.tv/2024/11/25/Nuoc-hoa-nam-Dior-Homme-EDT-100ml-chinh-hang-gia-re-1.jpg" alt="Maison Francis Kurkdjian A La Rose" class="img-fluid border-2 rounded-4">
+                </div>
+                <div class="col-md-8 perfume-product-info">
+                    <h4 class="text-center">Dior EDT Men Coco Monday new collection</h4>
+                    <div class="row perfume-details d-flex justify-content-between align-content-center text-center">
+                        <p class="col-md-3 perfume-price">799.000đ</p>
+                        <p class="col-md-4 perfume-size">50ml</p>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-between">
+                        <div class=""></div>
+                        <span class="perfume-freeship">FREESHIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end card 6-->
+        <div class="container-product-card-perfume justify-content-around align-content-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://img.upanh.tv/2024/11/25/nuoc-hoa-miss-dior-rose-nrose-hong_706f6d86502b46f782961a9e3b0d8703.webp" alt="Maison Francis Kurkdjian A La Rose" class="img-fluid border-2 rounded-4">
+                </div>
+                <div class="col-md-8 perfume-product-info">
+                    <h4 class="text-center">Dior pink rose N'Rose BLW 3011</h4>
+                    <div class="row perfume-details d-flex justify-content-between align-content-center text-center">
+                        <p class="col-md-3 perfume-price">890.000đ</p>
+                        <p class="col-md-4 perfume-size">20ml</p>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-between">
+                        <div class=""></div>
+                        <span class="perfume-freeship">FREESHIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end card 7-->
+    </div>
+    </div>
+    <div class="footer">
+        <!-- heading footer -->
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="notification mt-4">
+                    <h2 class="text-center">ĐĂNG KÝ NHẬN THÔNG BÁO</h2>
+                    <p class="text-center">Chương trình khuyến mãi | Hợp tác kinh doanh</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form class="email-field mb-md-0 mb-4">
+                    <input type="email" placeholder="Nhập e-mail của bạn..." class="email-input">
+                    <button type="email" class="submit-button">GỬI</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 infostore">
+                <h5>Thông tin cửa hàng</h5>
+                <ul class="list-unstyled">
+                    <li><a href="./home.html">Trang chủ</a></li>
+                    <li><a href="#">Thông tin</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                    <li><a href="#">Về GNT</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 policy  mt-4 mb-4 mt-md-0 mb-md-0">
+                <h5>Chính sách</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Phương thức vận chuyển</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Hỗ trợ khách hàng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3  mt-4 mb-4 mt-md-0 mb-md-0">
+                <h5>Thông tin liên hệ</h5>
+                <p><i class="fas fa-phone-alt mr-2"></i> 0868 307 030</p>
+                <p><i class="fas fa-clock mr-2"></i> 08:30 - 21:30 (T2-T7)</p>
+                <h5>Kết nối với chúng tôi</h5>
+                <div>
+                    <i class="fab fa-facebook mr-2"></i>
+                    <i class="fab fa-instagram mr-2"></i>
+                    <i class="fab fa-tiktok mr-2"></i>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mt-4 mb-4 mt-md-0 mb-md-0">
+                <h5>Hệ thống cửa hàng</h5>
+                <p>Chi nhánh 1: 470 Trần Đại Nghĩa, Ngũ Hành Sơn, TP. Đà Nẵng</p>
+                <p>Chi nhánh 2: 290 Phạm Ngũ Lão, Phú Hội, TP. Huế</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-center">PHƯƠNG THỨC THANH TOÁN</h5>
+                <div class="text-center">
+                    <div class="container text-center mt-3">
+                        <div class="justify-content-center mt-4">
+                            <div class="d-flex justify-content-center payment-container">
+                                <a href="https://www.visa.com.vn/vi_VN/pay-with-visa/featured-technologies/mobile-payments.html" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/VISA-Logo-1976.png" alt="Visa Payment" class="img-fluid" style="max-width: 80px;">
+                                </a>
+                                <a href="https://developers.momo.vn/v3/vi/docs/payment/guides/payment-with-aio/" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/mom.jpg" alt="MoMo Payment" class="img-fluid"  style="width: 40px;">
+                                </a>
+                                <a href="https://vivnpay.vn/blog/vnpayqr-vi-vnpay" target="_blank" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/vnpay.png" alt="VNPay Payment" class="img-fluid"  style="width: 40px;">
+                                </a>
+                                <a href="https://zalopay.vn/" target="_blank" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/Logo-ZaloPay-Square.jpg" alt="ZaloPay Payment" class="img-fluid" style="width: 40px;">
+                                </a>
+                                <a href="https://ghn.vn/" target="_blank" class="payment-icon" style="margin-top: -12px">
+                                    <img src="https://img.upanh.tv/2024/11/26/Logo-GHN-Orange.webp?fbclid=IwY2xjawGydJdleHRuA2FlbQIxMAABHVDd1i3r_hU6MLHztyuS8qY2-bJ5YRG9bJD3_c4ZtwsQuZ4edsM575VIXA_aem_Cr4WcULiY3KHxxwzT3CofA" alt="GHN" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>			
+        <div class="row">
+            <div class="text-center mt-4 border-top border-dark">
+                <p class="pt-4 pt-lg-5">© Bản quyền thuộc công ty G.N.T COSMETICS | Cung cấp bởi Sapo</p>
+            </div>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+</body>
+</html>

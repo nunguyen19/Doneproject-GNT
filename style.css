@@ -1,0 +1,342 @@
+* {
+    box-sizing: border-box;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.box {
+  border: 2px solid rgb(255, 255, 255); /* Viền ngoài màu trắng */
+  background-color: rgb(242, 177, 210); /* Nền màu trắng */
+  height: 150px; /* Chiều cao của ô */
+  word-wrap: break-word; /* Đảm bảo chữ tự động xuống dòng khi tràn */
+}
+
+.banner {
+    background-color: rgb(241, 218, 217);
+    max-width: 100%;
+}
+/* search */
+.search-wrapper, .email-field {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 15px;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 43px;
+    border: 2px solid rgb(210, 115, 113)
+}
+.search-input, .email-input {
+    border: none;
+    padding: 5px 10px;
+    font-size: 20px;
+    color: #666;
+    width: 100%;
+}
+.search-input:focus, .email-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+.search-button, .submit-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: none;
+    background-color: #E8A5A5;
+    padding: 0 30px;
+    transition: background-color 0.3s;
+}
+.search-button:hover, .submit-button:hover {
+    background-color: #d89393;
+}
+.search-icon {
+    color: white;
+    font-size: 15px;
+}
+    @media (max-width: 500px) {
+        .hide-placeholder::placeholder {
+            color: transparent;
+        }
+    }
+/* phonecontainer, login container */
+.phone-container, .login-container {
+    margin-top: 30px;
+    margin-left: 0px;
+    text-align: center;
+}
+.phone-container i, .login-container i {
+    color: rgb(213, 153, 158);
+    font-size: 38px;
+    transform: rotateY(180deg);
+}
+.login-container a, .login-cont a{
+    text-decoration: none;
+    color: black;
+}
+/* phone cont, login cont */
+.phone-cont, .login-cont {
+    justify-content: flex-start;
+}
+.phone-cont i, .login-cont i {
+    transform: rotateY(180deg);
+    font-size: 30px;
+    color: rgb(213, 153, 158);
+}
+.phone-cont p{
+    display: inline-block;
+}
+/* navbar */
+.navbar {
+    background-color: rgb(247, 205, 204);
+}
+.nav-link {
+    color: black;
+}
+.navbar-nav a:hover{
+color: hotpink;
+}
+/* footer */
+.footer {
+    background-color: #FABFC0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.payment-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 5px; 
+}
+.payment-icon {
+    margin: 0 10px; 
+}
+.payment-icon img {
+    max-width: 50px; 
+    transition: transform 0.2s; 
+}
+.payment-icon img:hover {
+    transform: scale(1.1); 
+}
+.infostore a, .policy a {
+    color: black;
+    text-decoration: none;
+}
+
+/* page flashsale body từ đây nha Nữ */
+
+.category-body-flashsale-card {
+    background-color: #FFE1E1;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 12px;
+    border: 2px solid #FDF0F0;
+    height: 250px;
+    padding: 15px;
+    border-radius: 20px; /* Bo góc lớn cho viền ngoài */
+    padding: 10px; /* Khoảng cách giữa viền ngoài và viền trong */
+    box-shadow: 2px 4px 8px #e55d8833; /* Đổ bóng nhẹ */
+}
+    .voucher-card {
+        border: 2px solid #f1cedb;
+        border-radius: 10px;
+        overflow: hidden; /* Đảm bảo hình ảnh không vượt ra ngoài border */
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        border-color: #fbe4e4;
+        background-color: #FDF0F0;
+        box-shadow: 2px 4px 8px #e55d8833; /* Đổ bóng nhẹ */
+        display: flex; /* Dùng Flexbox để dễ căn chỉnh */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        height: 100%; /* Chiều cao đầy đủ */
+      }
+      .voucher-card img {
+        object-fit: cover; /* Giúp hình ảnh được cắt và không dư */
+        width: 100%; /* Hình ảnh luôn chiếm hết khung cha */
+        height: 100%; /* Đồng bộ với cha */
+      }
+      .voucher-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Điều chỉnh khung theo màn hình */
+        gap: 15px; /* Khoảng cách giữa các khung */
+      }
+.border-container {
+    border: 2px solid #FDF0F0;  /* Viền xung quanh */
+    border-radius: 15px;      /* Bo góc cho viền */
+    padding: 20px;            /* Padding giữa viền và các thẻ */
+    background-color:#FDF0F0 ;  /* Bỏ màu nền ngoài khung */
+}
+.container-magiamgia {
+    width: 80%;           
+    margin: 0 auto;  
+}
+.container-flasssale {
+    width: 80%;           
+    margin: 0 auto;  
+}
+.body-gift {
+    object-fit: cover
+}
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-title{ 
+    background-color: #FDF0F0;
+}
+.product-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FDF0F0;
+    flex: 1;
+    border: 4px solid #DF969D; /* Viền ngoài dày */
+    border-radius: 20px; /* Bo góc lớn cho viền ngoài */
+    padding: 10px; /* Khoảng cách giữa viền ngoài và viền trong */
+    box-shadow: 0 4px 8px rgba(42, 42, 42, 0.2); /* Đổ bóng nhẹ */
+    margin-bottom: 10px; /* Khoảng cách giữa các sản phẩm */
+    max-width: 300px;
+    margin: auto;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #FDF0F0;
+    color: #DF5656;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ảnh sản phẩm */
+.product-image {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 3px solid #f8c4c4;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px solid #f8c4c4 ;
+    margin: auto;
+    display: block;
+}
+.product-info {
+    text-align: center;
+}
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #000;
+}
+
+.price {
+    font-size: 14px;
+}
+
+.current-price {
+    color: #DF5656;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    margin-top: 5px;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+}
+
+.body-container-flasssale {
+    width: 80%;
+    margin: auto;
+}
+.category-body-flashsale-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+  }
+  .category-body-flashsale-item {
+    font-family: "Times New Roman", serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+    text-align: center;
+    background-color: #FDF0F0;
+    border: 2px solid #fad0d0;
+    border-radius: 10px;
+    padding: 20px 10px; /* Chiều dọc lớn hơn, chiều ngang nhỏ hơn */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 90%;
+    max-width: 250px; /* Giới hạn chiều rộng */
+    height: auto; /* Tự động theo chữ */
+    box-shadow: 2px 4px 10px rgba(245, 80, 80, 0.2);
+  }
+  .body-flashsale-banner {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto; /* Tự động dựa trên ảnh */
+}
+
+.body-flashsale-banner img {
+    display: block; /* Loại bỏ khoảng trống inline */
+    width: 100%;    /* Chiếm toàn bộ chiều ngang */
+    height: auto;   /* Giữ tỷ lệ ảnh */
+}
+
+.body-container-flasssale-agift{
+    width: 100vw; /* Chiều rộng full màn hình */
+    display: block; /* Loại bỏ khoảng trắng bên dưới hình ảnh */
+}
+.content-body-container-flassale {
+    border-radius: 20px;
+    background-color: #FDF0F0;
+}
+.title-content-body-container-flassale {
+    margin: 30px;
+}
+.card-body-container-flassale {
+    width: 300px;
+    height: 310px;
+    border: 4px solid #DF969D; /* Độ dày viền 2px, kiểu solid, màu #DF969D */
+    border-radius: 15px; /* Tùy chọn: Bo tròn các góc */
+    box-shadow:2px solid #ec8a94;
+    margin-bottom: 20px; 
+}
+
+.top-card-body-container-flassale{
+    border: 2px solid #DF969D; /* Độ dày viền 2px, kiểu solid, màu #DF969D */
+}
+.bottom-card-body-container-flassale {
+    border: 2px solid #DF969D; /* Độ dày viền 2px, kiểu solid, màu #DF969D */
+    background-color: #DF969D;
+    color: white;
+}
+
+.sale-top-card-body-container-flassale {
+    background-color: #DF9CA0;
+    color: white;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.img-top-card-body-container-flassale img{
+    border: 2px solid #DF969D;
+}
+

@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Trang điểm</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .banner {
+        background-color: rgb(241, 218, 217);
+        max-width: 100%;
+    }
+    /* search */
+    .search-wrapper, .email-field {
+        position: relative;
+        margin-top: 30px;
+        margin-left: 15px;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 43px;
+        border: 2px solid rgb(210, 115, 113)
+    }
+    .search-input, .email-input {
+        border: none;
+        padding: 5px 10px;
+        font-size: 20px;
+        color: #666;
+        width: 100%;
+    }
+    .search-input:focus, .email-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .search-button, .submit-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: none;
+        background-color: #E8A5A5;
+        padding: 0 30px;
+        transition: background-color 0.3s;
+    }
+    .search-button:hover, .submit-button:hover {
+        background-color: #d89393;
+    }
+    .search-icon {
+        color: white;
+        font-size: 15px;
+    }
+        @media (max-width: 500px) {
+            .hide-placeholder::placeholder {
+                color: transparent;
+            }
+        }
+    /* phonecontainer, login container */
+    .phone-container, .login-container {
+        margin-top: 30px;
+        margin-left: 0px;
+        text-align: center;
+    }
+    .phone-container i, .login-container i {
+        color: rgb(213, 153, 158);
+        font-size: 38px;
+        transform: rotateY(180deg);
+    }
+    .login-container a, .login-cont a{
+        text-decoration: none;
+        color: black;
+    }
+    /* phone cont, login cont */
+    .phone-cont, .login-cont {
+        justify-content: flex-start;
+    }
+    .phone-cont i, .login-cont i {
+        transform: rotateY(180deg);
+        font-size: 30px;
+        color: rgb(213, 153, 158);
+    }
+    .phone-cont p{
+        display: inline-block;
+    }
+    /* navbar */
+    .navbar {
+        background-color: rgb(247, 205, 204);
+    }
+    .nav-link {
+        color: black;
+    }
+    .navbar-nav a:hover{
+	color: hotpink;
+    }
+    /* breadcrum */
+    .breadcrumb {
+        margin-top: 10px;
+    }
+    .breadcrumb ul, .sort-section ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .breadcrumb li:not(:last-child)::after {
+        content: "/";
+        color: gray;
+        margin: 0 10px;
+    }
+    .breadcrumb a{
+        text-decoration: none;
+        color: black;
+        padding: 5px 5px;
+    }
+    .breadcrumb a:hover {
+        background-color: rgba(231, 197, 200, 0.5);
+        border-radius: 10px;
+    }
+    /* header chăm sóc da */
+    .header-chamsocda h3 {
+        color: rgb(213, 153, 158);
+        font-weight: bold;
+        font-size: 30px;
+        margin: 0 0 20px 20px;
+    }
+    .sort-section a{
+        margin-right: 20px;
+        text-decoration: none;
+        color: black;
+        padding: 5px 5px;
+    }
+    .sort-section li:not(:first-child):hover {
+        border-radius: 5px;
+        background-color: rgba(231, 197, 200, 0.5);
+        margin: 0 10px;
+    }
+    .sort-dropdown, .sort-section {
+        float: inline-end;
+        margin-right: 20px;
+    }
+    /* footer */
+	.footer {
+        background-color: #FABFC0;
+        padding-left: 20px;
+        padding-right: 20px;
+	}
+	.payment-container {
+		display: flex;
+		justify-content: center; 
+		margin-top: 5px; 
+	}
+	.payment-icon {
+		margin: 0 10px; 
+	}
+	.payment-icon img {
+		max-width: 50px; 
+		transition: transform 0.2s; 
+	}
+	.payment-icon img:hover {
+		transform: scale(1.1); 
+	}
+	.infostore a, .policy a {
+		color: black;
+		text-decoration: none;
+	}
+    /* filter-container */
+    .filter-container {
+        position: relative;
+        display: inline-block;
+        font-family: sans-serif;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .filter-button, .sort-button {
+        padding: 10px 15px;
+        background-color: #fbd6d6;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+    }
+    .filter-button:hover, .sort-button:hover {
+        background-color: #E8A5A5;
+    }
+    .dropdown-content {
+        margin: 5px 0;
+        display: none;
+        position: absolute;
+        min-width: 250px;
+        border: #f4e1e1 1px solid;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        background-color:white;
+    }
+    .dropdown-content.show {
+        display: block;
+    }
+    .divider {
+        height: 1px;
+        background: gray;
+        margin: 20px 0;
+    }
+    .filter-section {
+        padding: 20px 10px;
+    }
+    .filter-section p {
+        font-weight: 600;
+    }
+    .filter-option {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .filter-option:hover {
+        color: #d89393;
+        font-weight: 600;
+    }
+    .apply-button {
+        width: calc(100% - 40px);
+        margin: 15px;
+        padding: 10px;
+        background-color: #fbd6d6;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+    .apply-button:hover {
+        background-color: #E8A5A5;
+        color: black;
+    }
+    /* product listing section */
+    .product-overview {
+        display: flex; 
+        justify-content: center;
+        flex-wrap: wrap; 
+        gap: 20px;
+        padding: 20px;
+    }
+    .product-card {
+        border: 2px solid #ed8d8d; /* Viền màu hồng */
+        border-radius: 15px;
+        background-color: #fff5f5; /* Nền của khung sản phẩm */
+        position: relative;
+        box-shadow: 0px 4px 6.1px #FFB1B2; /* Đổ bóng màu hồng nhạt */
+        text-align: center;
+        margin-bottom: 30px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hiệu ứng hover */
+    }
+    .product-img {
+        width: 100%;
+        max-width: 340px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        height: auto;
+        object-fit: cover;
+    }
+    .favorite-button {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background-color: transparent;
+        color: rgb(247, 199, 199);
+		border: none;
+		cursor: pointer;
+	}
+    .favorite-button:hover {
+        color: #f46c6c;
+    }
+    .product-title {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+    .product-description {
+      font-size: 14px;
+      color: #777;
+    }
+    .product-price {
+      color: #e30000;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        padding: 0;
+    }
+    .pagination li {
+        margin: 0 10px;
+    }
+
+    .pagination a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        border: 2px solid black;
+        border-radius: 50%;
+        font-size: 16px;
+        transition: all 0.3s;
+    }
+
+    .pagination a:hover {
+        background-color: #f0f0f0;
+    }
+
+    .pagination .active {
+        background-color: black;
+        color: white;
+    }
+
+    .pagination .next {
+        border: none;
+        font-size: 18px;
+    }
+</style>
+<link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- banner -->
+            <div class="banner col-12">
+                <img src="https://img.upanh.tv/2024/10/24/BANG-QC-DAU-TRANG-FIGMA-3.png" alt="" class=" img-fluid d-block">
+            </div>
+        </div>
+        <div class="row">
+            <!-- logo -->
+            <div class="col-3 col-md-2">
+                <a href="./home.html">
+					<img src="https://img.upanh.tv/2024/10/24/Logo.png" alt="" class="float-start img-fluid" style="margin-left: 25px; height: 110px;">
+				</a>
+            </div>
+            <!-- search box -->
+            <div class="col-md-4 col-6">
+                <form class="search-wrapper">
+                    <input type="search" placeholder="Tìm kiếm" name="search" class="search-input hide-placeholder">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search text-white"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- contact -->
+            <!-- contact -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="phone-container">
+                    <i class="fa fa-phone"></i>
+                    <div class="d-none d-xl-inline-block">
+                        <p>Hỗ trợ khách hàng<br>
+                            +1 6506671441</p>
+                    </div>
+                </div>
+            </div>
+            <!-- register/login -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="login-container">
+                    <a href="./register.html"><i class="fa fa-user"></i></a>
+                    <div class="d-none d-xl-inline-block">
+                        <a href="./register.html">Đăng Ký</a>
+                        <a href="./login.html" class="d-block">Đăng Nhập</a>
+                    </div>
+                </div>
+            </div>
+            <!-- cart -->
+            <div class="col-md-2 col-1 py-3">
+                <button id="cartButton" class="btn btn-outline-dark">
+                    <div class="cart-container">
+                        <i class="fa fa-cart-plus mt-2"></i>
+                        <span id="cartCount" class="badge bg-danger position-absolute translate-middle me-5">0</span>
+                        <p class="d-none d-lg-block text-black ms-2 pt-4">Giỏ hàng</p>
+                    </div> 
+                </button>
+                <div id="cartModal" class="modal fade bgmodal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Giỏ hàng của bạn</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="cartItems"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="w-100 d-flex justify-content-between">
+                                <span class="cart-total">Tổng tiền: 0₫</span>
+                                <button id="checkoutButton">Thanh toán</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- navigation bar -->
+            <nav class="navbar navbar-expand-md">
+                <button class="navbar-toggler ms-5 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="text-dark d-none d-xxl-inline">Danh mục sản phẩm</span>
+                </button>
+                <div class="collapse navbar-collapse  ms-5" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <!-- danh mục sản phẩm -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fa fa-bars d-none d-sm-inline-block"></i>
+                                <span>DANH MỤC SẢN PHẨM</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./chamsocda.html">Chăm sóc da</a></li>
+                                <li><a class="dropdown-item" href="./trangdiem.html">Trang điểm</a></li>
+                                <li><a class="dropdown-item" href="./chamsoccothe.html">Chăm sóc cơ thể</a></li>
+                                <li><a class="dropdown-item" href="./moi.html">Môi</a></li>
+                            </ul>
+                        </li>
+                        <!-- các danh mục mở rộng -->
+                        <li class="nav-item">
+							<a class="nav-link" href="./sanphambanchay.html">SẢN PHẨM BÁN CHẠY</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./flashsale.htm">FLASH SALE - CHỚP NHOÁNG</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./home.html#categories7">TIN TỨC & LÀM ĐẸP</a>
+						</li> 
+                        <!-- mở rộng contact - login -->
+                        <li class="nav-item phone-cont d-md-none d-block">
+                            <i class="fa fa-phone"></i>
+                            <p>+1 6506671441</p>
+                        </li>
+                        <li class="nav-item login-cont d-md-none d-block">
+                            <i class="fa fa-user"></i>
+                            <div class="d-inline">
+                                <a href="./register.html">Đăng Ký
+                                    <span style="border-right: 2px solid black;"></span>
+                                </a>
+                                <a href="./login.html">Đăng Nhập</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Breadcrum chamsocda -->
+    <div class="row">
+        <div class="col-12">
+            <nav class="breadcrumb">
+                <ul>
+                    <li><a href="./home.html">Trang chủ</a></li>
+                    <li><a href="#">Danh mục sản phẩm</a></li>
+                    <li><a href="./trangdiem.html">Trang điểm</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <!-- tiêu đề trang -->
+        <div class="col-12 header-chamsocda">
+            <h3>TRANG ĐIỂM</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <div class="filter-container">
+                <button class="filter-button" onclick="toggleDropdown(this)">
+                    Filter 
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <div class="filter-section">
+                        <p>THƯƠNG HIỆU</p>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand1">
+                            <label for="brand1">CHANEL</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand2">
+                            <label for="brand2">DIOR</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand3">
+                            <label for="brand3">YVES SAINT LAURENT (YSL)</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand4">
+                            <label for="brand4">MAC</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand5">
+                            <label for="brand5">KHÁC</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="filter-section">
+                        <p>GIÁ SẢN PHẨM</p>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price1">
+                            <label for="price1">Giá dưới 100.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price2">
+                            <label for="price2">100.000đ - 200.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price3">
+                            <label for="price3">200.000đ - 300.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price4">
+                            <label for="price4">300.000đ - 500.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price5">
+                            <label for="price5">500.000đ - 1.000.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price6">
+                            <label for="price6">Giá trên 1.000.000đ</label>
+                        </div>
+                    </div>
+                    <button class="apply-button">Áp dụng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="sort-section d-none d-xl-inline">
+                <ul>
+                    <li><a href="#" class="fw-bold">Sắp xếp: </a></li>
+                    <li><a href="#" id="sortPriceAsc">Giá tăng dần</a></li>
+                    <!-- <li><a href="./CSDpage1Giamdan.html">Giá giảm dần</a></li> -->
+                    <li><a href="#" id="sortPriceDesc">Giá giảm dần</a></li>
+                </ul>
+            </div>
+            <div class="sort-dropdown nav-item dropdown d-xl-none d-inline">
+                <a class="nav-link dropdown-toggle sort-button" data-bs-toggle="dropdown" href="#">Sắp xếp: </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Giá tăng dần</a></li>
+                    <li><a class="dropdown-item" href="#">Giá giảm dần</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="product-overview">
+            <div class="col-md-8">
+                <div class="row">
+                    <!-- sản phẩm 1 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/5597da30-4b04-4b24-825a-11568023396d.webp" class="product-img" alt="THE FACE SHOP">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <h5 class="product-title">THE FACE SHOP</h5>
+                            <p class="product-description">Phấn Phủ Chống Nắng THE FACE SHOP Natural</p> 
+                            <p class="product-price">499.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Phủ Chống Nắng THE FACE SHOP Natural', 'https://img.upanh.tv/2024/11/21/5597da30-4b04-4b24-825a-11568023396d.webp', 499000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 2 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/e236234e-1973-4aee-b45f-db1c7cced8bd.webp" class="product-img" alt="DEAR DAHLIA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <h5 class="product-title">DEAR DAHLIA</h5>
+                            <p class="product-description">Chì Kẻ Chân Mày Lâu Trôi màu Dear Dahlia</p> 
+                            <p class="product-price">769.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Chì Kẻ Chân Mày Lâu Trôi màu Dear Dahlia', 'https://img.upanh.tv/2024/11/21/e236234e-1973-4aee-b45f-db1c7cced8bd.webp', 769000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 3 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/4acf56d3-561d-4616-8b59-ca1aee09a79f.webp" class="product-img" alt="DEAR DAHLIA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <h5 class="product-title">DEAR DAHLIA</h5>
+                            <p class="product-description">Bảng Màu Mắt Đa Hiệu Ứng Dear Dahlia Secret</p> 
+                            <p class="product-price">1.499.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Bảng Màu Mắt Đa Hiệu Ứng Dear Dahlia Secret', 'https://img.upanh.tv/2024/11/21/4acf56d3-561d-4616-8b59-ca1aee09a79f.webp', 1499000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 4 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/b7f7a010-32e5-4159-9d8e-eb5c6cfe28fa.webp" class="product-img" alt="PERIPERA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <h5 class="product-title">PERIPERA</h5>
+                            <p class="product-description">Mascara Siêu Dày Mi Peripera Ink Black Cara</p> 
+                            <p class="product-price">279.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Mascara Siêu Dày Mi Peripera Ink Black Cara', 'https://img.upanh.tv/2024/11/21/b7f7a010-32e5-4159-9d8e-eb5c6cfe28fa.webp', 279000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 5 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/13dc87d5-d89f-4b7c-b917-e1a397b1fac2.webp" class="product-img" alt="PERIPERA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <h5 class="product-title">PERIPERA</h5>
+                            <p class="product-description">Màu Mắt Ánh Nhũ Peripera Sugar Twinkle Liquid</p> 
+                            <p class="product-price">89.250<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Màu Mắt Ánh Nhũ Peripera Sugar Twinkle Liquid', 'https://img.upanh.tv/2024/11/21/13dc87d5-d89f-4b7c-b917-e1a397b1fac2.webp', 89250)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 6 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/4bad1b42-bc24-4d08-91cf-08446a93cc85.webp" class="product-img" alt="PERIPERA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <h5 class="product-title">PERIPERA</h5>
+                            <p class="product-description">Phấn Tạo Khối Hiệu Ứng Tự Nhiên Peripera Ink</p> 
+                            <p class="product-price">280.440<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Tạo Khối Hiệu Ứng Tự Nhiên Peripera Ink', 'https://img.upanh.tv/2024/11/21/4bad1b42-bc24-4d08-91cf-08446a93cc85.webp', 280440)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 7 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/1c542325-3d2a-40ef-8320-eebb12f73745.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Phấn Nước Làm Dịu Da Clio Kill Cover Calming</p> 
+                            <p class="product-price">679.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Nước Làm Dịu Da Clio Kill Cover Calming', 'https://img.upanh.tv/2024/11/21/1c542325-3d2a-40ef-8320-eebb12f73745.webp', 679000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 8 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/7cfa53f0-317d-4944-9428-0349268bf1c4.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Kem Lót Clio Nâng Tông Da Wake Up Primer</p> 
+                            <p class="product-price">599.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Kem Lót Clio Nâng Tông Da Wake Up Primer', 'https://img.upanh.tv/2024/11/21/7cfa53f0-317d-4944-9428-0349268bf1c4.webp', 599000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>  
+                    </div>
+
+                    <!-- sản phẩm 9 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/3195bdd8-3e2e-4791-a53e-ae49a20a893f.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Phấn Nước Nâng Tông Da Clio Stay Perfect</p> 
+                            <p class="product-price">719.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Nước Nâng Tông Da Clio Stay Perfect', 'https://img.upanh.tv/2024/11/21/3195bdd8-3e2e-4791-a53e-ae49a20a893f.webp', 719000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>  
+                    </div>
+
+                    <!-- sản phẩm 10 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/fe034b93-75bb-4831-b556-172d394e2346.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Phấn Nhũ Tạo Khối Bắt Sáng Clio Prism</p> 
+                            <p class="product-price">495.670<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Nhũ Tạo Khối Bắt Sáng Clio Prism', 'https://img.upanh.tv/2024/11/21/fe034b93-75bb-4831-b556-172d394e2346.webp', 495670)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>
+                    </div>
+
+                    <!-- sản phẩm 11 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/25028616-d2a3-4016-be6a-d7ce34937c66.webp" class="product-img" alt="M.O.I">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">M.O.I</h5>
+                            <p class="product-description">[Tropical Edition] Son Thỏi Sáp Love M.O.I Matte</p>
+                            <p class="product-price">215.400<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('[Tropical Edition] Son Thỏi Sáp Love M.O.I Matte', 'https://img.upanh.tv/2024/11/21/25028616-d2a3-4016-be6a-d7ce34937c66.webp', 215400)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>  
+                    </div>
+
+                    <!-- sản phẩm 12 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/528635d7-8bc6-4acf-b010-fee370b3028f.webp" class="product-img" alt="DEAR DAHLIA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">DEAR DAHLIA</h5>
+                            <p class="product-description">Phấn Phủ Dear Dahlia Blooming Edition Sheer Light Finishing</p> 
+                            <p class="product-price">999.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Phủ Dear Dahlia Blooming Edition Sheer Light Finishing', 'https://img.upanh.tv/2024/11/21/528635d7-8bc6-4acf-b010-fee370b3028f.webp', 999000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>  
+                    </div>
+
+                    <!-- sản phẩm 13 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/9c6f48b2-dbd9-437f-808f-5d5a187c5060.webp" class="product-img" alt="DEAR DAHLIA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">DEAR DAHLIA</h5>
+                            <p class="product-description">Màu Mắt Ánh Nhũ Lấp Lánh Dear Dahlia Paradise Shine Eye</p> 
+                            <p class="product-price">639.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Màu Mắt Ánh Nhũ Lấp Lánh Dear Dahlia Paradise Shine Eye', 'https://img.upanh.tv/2024/11/21/9c6f48b2-dbd9-437f-808f-5d5a187c5060.webp', 639000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>  
+                    </div>
+
+                    <!-- sản phẩm 14 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/69b42e27-be8b-4358-a588-3a9448871d1f.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Phấn Phủ Kiềm Dầu Peripera Oil Capture Setting Pact</p> 
+                            <p class="product-price">209.250<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Phủ Kiềm Dầu Peripera Oil Capture Setting Pact', 'https://img.upanh.tv/2024/11/21/69b42e27-be8b-4358-a588-3a9448871d1f.webp', 209250)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>  
+                    </div>
+
+                    <!-- sản phẩm 15 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/26cdbcf0-c54c-4e6d-85c1-6709a13d8856.webp" class="product-img" alt="BANILA CO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>                                                    
+                            <h5 class="product-title">BANILA CO</h5>
+                            <p class="product-description">Phấn Nước Banila Co Nâng Tông Da Covericious Ultimate</p> 
+                            <p class="product-price">570.400<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Nước Banila Co Nâng Tông Da Covericious Ultimate', 'https://img.upanh.tv/2024/11/21/26cdbcf0-c54c-4e6d-85c1-6709a13d8856.webp', 570400)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>  
+                    </div>
+
+                    <!-- sản phẩm 16 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/0524aa67-1c4c-46ef-b240-6d79e6986776.webp" class="product-img" alt="LEMONADE">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">LEMONADE</h5>
+                            <p class="product-description">Chì Kẻ Mày Hai Đầu Lemonade Want It Got It Dual Eyebrow</p> 
+                            <p class="product-price">179.100<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Chì Kẻ Mày Hai Đầu Lemonade Want It Got It Dual Eyebrow', 'https://img.upanh.tv/2024/11/21/0524aa67-1c4c-46ef-b240-6d79e6986776.webp', 179100)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 17 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/dc9c83b6-2412-483c-990c-2941144f4fb9.webp" class="product-img" alt="KAI">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">KAI</h5>
+                            <p class="product-description">Set 3 Dao Cạo Lông Mày Pretty Kai Slim L</p> 
+                            <p class="product-price">68.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Set 3 Dao Cạo Lông Mày Pretty Kai Slim L', 'https://img.upanh.tv/2024/11/21/dc9c83b6-2412-483c-990c-2941144f4fb9.webp', 68000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 18 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/d451b57f-4029-483a-8f8a-b859a469eefa.webp" class="product-img" alt="DEAR DAHLIA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">DEAR DAHLIA</h5>
+                            <p class="product-description">Bông Mút Trang Điểm Dear Dahlia Marble Multi-Blender</p> 
+                            <p class="product-price">251.100<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Bông Mút Trang Điểm Dear Dahlia Marble Multi-Blender', 'https://img.upanh.tv/2024/11/21/d451b57f-4029-483a-8f8a-b859a469eefa.webp', 251100)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 19 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/597f8da7-ea7d-43d0-9b27-5aa2d10cb3f8.webp" class="product-img" alt="SILKYGIRL">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">SILKYGIRL</h5>
+                            <p class="product-description">Má Hồng Dạng Thỏi Silkygirl Cool Chic Blush Stick 4G</p> 
+                            <p class="product-price">188.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Má Hồng Dạng Thỏi Silkygirl Cool Chic Blush Stick 4G', 'https://img.upanh.tv/2024/11/21/597f8da7-ea7d-43d0-9b27-5aa2d10cb3f8.webp', 188000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 20 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/bami_4a8f71de91eb449985a40fd7e28edf1d.png" class="product-img" alt="TRIM">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">TRIM</h5>
+                            <p class="product-description">Bấm Mi Làm Cong Mi Trim Eyelash Curler</p> 
+                            <p class="product-price">62.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Bấm Mi Làm Cong Mi Trim Eyelash Curler', 'https://img.upanh.tv/2024/11/21/bami_4a8f71de91eb449985a40fd7e28edf1d.png', 62000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                </div>
+                <ul class="pagination">
+                    <li><a href="./trangdiem.html">1</a></li>
+                    <li><a href="./trangdiem2.html"  class="active">2</a></li>
+                    <li><a href="./trangdiem3.html">3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> <!--Filter-->
+	<section class="myfooter">
+		<div class="footer">
+			<!-- heading footer -->
+			<div class="row">
+				<div class="col-md-6 col-12">
+					<div class="notification mt-4">
+						<h2 class="text-center">ĐĂNG KÝ NHẬN THÔNG BÁO</h2>
+						<p class="text-center">Chương trình khuyến mãi | Hợp tác kinh doanh</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<form class="email-field mb-md-0 mb-4">
+						<input type="email" placeholder="Nhập e-mail của bạn..." class="email-input">
+						<button type="email" class="submit-button">GỬI</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 infostore">
+					<h5>Thông tin cửa hàng</h5>
+					<ul class="list-unstyled">
+						<li><a href="./home.html">Trang chủ</a></li>
+						<li><a href="#">Thông tin</a></li>
+						<li><a href="#">Tuyển dụng</a></li>
+						<li><a href="#">Về GNT</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 policy  mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Chính sách</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Phương thức vận chuyển</a></li>
+						<li><a href="#">Chính sách đổi trả</a></li>
+						<li><a href="#">Hỗ trợ khách hàng</a></li>
+						<li><a href="#">Chính sách bảo mật</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3  mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Thông tin liên hệ</h5>
+					<p><i class="fas fa-phone-alt mr-2"></i> 0868 307 030</p>
+					<p><i class="fas fa-clock mr-2"></i> 08:30 - 21:30 (T2-T7)</p>
+					<h5>Kết nối với chúng tôi</h5>
+					<div>
+						<i class="fab fa-facebook mr-2"></i>
+						<i class="fab fa-instagram mr-2"></i>
+						<i class="fab fa-tiktok mr-2"></i>
+					</div>
+	
+				</div>
+				<div class="col-lg-3 col-md-6 col-12 mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Hệ thống cửa hàng</h5>
+					<p>Chi nhánh 1: 470 Trần Đại Nghĩa, Ngũ Hành Sơn, TP. Đà Nẵng</p>
+					<p>Chi nhánh 2: 290 Phạm Ngũ Lão, Phú Hội, TP. Huế</p>
+				</div>
+			</div>
+			<div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-center">PHƯƠNG THỨC THANH TOÁN</h5>
+                    <div class="text-center">
+                        <div class="container text-center mt-3">
+                            <div class="justify-content-center mt-4">
+                                <div class="d-flex justify-content-center payment-container">
+                                    <a href="https://www.visa.com.vn/vi_VN/pay-with-visa/featured-technologies/mobile-payments.html" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/VISA-Logo-1976.png" alt="Visa Payment" class="img-fluid" style="max-width: 80px;">
+                                    </a>
+                                    <a href="https://developers.momo.vn/v3/vi/docs/payment/guides/payment-with-aio/" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/mom.jpg" alt="MoMo Payment" class="img-fluid"  style="width: 40px;">
+                                    </a>
+                                    <a href="https://vivnpay.vn/blog/vnpayqr-vi-vnpay" target="_blank" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/vnpay.png" alt="VNPay Payment" class="img-fluid"  style="width: 40px;">
+                                    </a>
+                                    <a href="https://zalopay.vn/" target="_blank" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/Logo-ZaloPay-Square.jpg" alt="ZaloPay Payment" class="img-fluid" style="width: 40px;">
+                                    </a>
+                                    <a href="https://ghn.vn/" target="_blank" class="payment-icon" style="margin-top: -12px">
+                                        <img src="https://img.upanh.tv/2024/11/26/Logo-GHN-Orange.webp?fbclid=IwY2xjawGydJdleHRuA2FlbQIxMAABHVDd1i3r_hU6MLHztyuS8qY2-bJ5YRG9bJD3_c4ZtwsQuZ4edsM575VIXA_aem_Cr4WcULiY3KHxxwzT3CofA" alt="GHN" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+            </div>			
+			<div class="row">
+				<div class="text-center mt-4 border-top border-dark">
+					<p class="pt-4 pt-lg-5">© Bản quyền thuộc công ty G.N.T COSMETICS | Cung cấp bởi Sapo</p>
+				</div>
+			</div>
+		</div>
+	</section> <!--footer-->
+<script src="./js/main.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script>
+    function toggleDropdown(button) {
+    button.classList.toggle('active');
+    button.nextElementSibling.classList.toggle('show');
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function closeDropdown(e) {
+        if (!button.contains(e.target) && !button.nextElementSibling.contains(e.target)) {
+            button.classList.remove('active');
+            button.nextElementSibling.classList.remove('show');
+            document.removeEventListener('click', closeDropdown);
+        }
+    });
+}
+</script>
+<script src="./script2.js"></script>
+</body>
+</html>

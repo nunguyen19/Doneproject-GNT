@@ -1,0 +1,75 @@
+/* giỏ hàng nằm trên header */
+.cart-container {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.cart-container i {
+    font-size: 38px; /* Điều chỉnh kích thước icon cart */
+    color: rgb(213, 153, 158);
+}
+#cartCount {
+    top: 10px;
+    right: -10px;
+    font-size: 15px;
+    border-radius: 30px;
+        @media (max-width: 1100px) {
+            top: 10px;
+            right: -90px;
+    }
+}
+.cart-container span {
+    margin-left: 8px; /* Khoảng cách giữa icon và chữ "Giỏ hàng" */
+    font-size: 16px; /* Đảm bảo chữ vừa với kích thước icon */
+}
+/* button thêm vào giỏ hàng */
+.button-addtocart {
+    border: none;
+    background-color: #f2b6b6;
+    width: auto;
+    color: #333;
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.button-addtocart:hover {
+    background-color: #d54848;
+}
+/* cửa sổ giỏ hàng */
+.modal-body img {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: cover;
+}
+#cartModal .modal-body {
+    max-height: 1000px;
+    overflow-y: auto;
+}
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+.modal-dialog {
+    position: absolute;
+    right: 5px; /* Canh phải */
+    top: 0px;
+    transform: translateY(-50%);
+    width: 300px;
+}
+.modal-footer button {
+    border-radius: 15px;
+    padding: 10px 20px;
+    background-color: #f2b6b6;
+    border: none;
+}
+.cart-total {
+font-weight: bold;
+}
+#cartButton {
+    border: none;
+    background-color: transparent;
+}

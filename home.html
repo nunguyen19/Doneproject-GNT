@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>G.N.T Cosmetic</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content=""/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+		* {
+        box-sizing: border-box;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .banner {
+        background-color: rgb(241, 218, 217);
+        max-width: 100%;
+    }
+    .search-wrapper, .email-field {
+        position: relative;
+        margin-top: 30px;
+        margin-left: 15px;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 43px;
+        border: 2px solid rgb(210, 115, 113)
+    }
+    .search-input, .email-input {
+        border: none;
+        padding: 5px 10px;
+        font-size: 20px;
+        color: #666;
+        width: 100%;
+    }
+    .search-input:focus,.email-input:focus  {
+        outline: none;
+        box-shadow: none;
+    }
+    .search-button, .submit-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: none;
+        background-color: #E8A5A5;
+        padding: 0 30px;
+        transition: background-color 0.3s;
+    }
+    .search-button:hover, .submit-button:hover {
+        background-color: #d89393;
+    }
+    .search-icon {
+        color: white;
+        font-size: 15px;
+    }
+		@media (max-width: 500px) {
+			.hide-placeholder::placeholder {
+				color: transparent;
+			}
+		}
+    .phone-container, .login-container {
+        margin-top: 30px;
+        margin-left: 0px;
+        text-align: center;
+    }
+    .phone-cont, .login-cont {
+        justify-content: flex-start;
+    }
+    .phone-cont i, .login-cont i {
+        transform: rotateY(180deg);
+        font-size: 20px;
+        color: rgb(213, 153, 158);
+    }
+
+    .phone-cont p, .login-cont p {
+        display: inline-block;
+    }
+    .phone-container i, .login-container i {
+        color: rgb(213, 153, 158);
+        font-size: 38px;
+        transform: rotateY(180deg);
+    }
+	.login-container a, .login-cont a{
+		text-decoration: none;
+		color: black;
+	}
+    .navbar {
+        background-color: rgb(247, 205, 204);
+    }
+    .nav-link {
+        color: black;
+    }
+	.navbar-nav a:hover{
+	color: hotpink;
+	}
+    .product-card {
+      border: 2px solid #ed8d8d; /* Viền màu hồng */
+      border-radius: 15px;
+      text-align: center;
+      background-color: #fff5f5; /* Nền của khung sản phẩm */
+      position: relative;
+    }
+    .product-img {
+      width: 100%;
+      max-width: 350px;
+	  border-top-left-radius: 15px;
+	  border-top-right-radius: 15px;
+      height: auto;
+	  object-fit: cover;
+    }
+    .product-title {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+    .product-description {
+      font-size: 14px;
+      color: #777;
+    }
+    .product-price {
+      color: #e30000;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+    }
+	.container-product {
+		position: relative;
+		height: 550px;
+	}
+	.favorite-button {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		
+	}
+	.favorite-button svg {
+		fill: rgb(224, 140, 154);
+		width: 24px;
+		height: 24px;
+	}
+
+	.keyword-section {
+    display: flex;
+    justify-content: center; /* Căn giữa các nút */
+    gap: 20px; /* Khoảng cách giữa các nút */
+    flex-wrap: wrap;
+	}
+
+	.keyword-item {
+		background-color: rgb(234, 191, 199); /* Màu nền hồng nhạt */
+		color: black; /* Màu chữ */
+		padding: 10px 20px; /* Khoảng đệm */
+		border-radius: 10px; /* Bo góc */
+		text-align: center;
+		font-weight: bold;
+		display: inline-block;
+	}
+	.ant-image-img {
+		width: 80%; /* Giúp hình ảnh chiếm hết chiều ngang của cột */
+		border-radius: 5px; /* Bo góc cho hình ảnh */
+		height: auto;
+		object-fit: cover; /* Giữ tỷ lệ hình ảnh và cắt cho vừa khung */
+		cursor: pointer; /* Con trỏ dạng bàn tay */
+	}
+	.ant-image:hover {
+    transform: scale(0.9); /* Thu nhỏ hình ảnh xuống 90% */
+	transition: transform 0.3s ease; /* Hiệu ứng chuyển đổi mượt */
+	}
+	.hover-image {
+			transition: transform 0.4s ease; /* Smooth transition for zoom effect */
+	}
+
+	.hover-image:hover {
+		transform: scale(0.9); /* Scale the image to 90% when hovering */
+	}
+	.art-summary{
+		font-size: 14px;
+		font-family: "Noto Sans", sans-serif;
+		margin-bottom: 20px;
+		color: #707070;
+		line-height: 20px;
+	}
+	.link {
+			color: black;            /* Set text color to black */
+			text-decoration: none;   /* Remove underline */
+			font-size: 1.6em;        /* Increase font size */
+			transition: color 0.3s;  /* Smooth transition for color change */
+	}
+
+	.link:hover {
+		color: rgb(255, 2, 145) ;          /* Change text color to pink when hovering */
+	}
+		.image-blog-left {
+		display: flex;
+		justify-content: center; /* Canh giữa hình ảnh */
+		margin-bottom: 10px; /* Tạo khoảng cách giữa các hình ảnh */
+	}
+
+	.small-image {
+		width: 100%; /* Điều chỉnh kích thước hình ảnh */
+		height: auto; /* Giữ tỷ lệ hình ảnh */
+		max-height: 200px; /* Đặt chiều cao tối đa để tránh hình ảnh quá lớn */
+	}
+
+	.blog_items {
+		padding: 1px; /* Thêm padding để tạo khoảng cách giữa các cột */
+	}
+	/* footer */
+	.footer {
+            background-color: #FABFC0;
+			padding-left: 20px;
+			padding-right: 20px;
+	}
+	.payment-container {
+		display: flex;
+		justify-content: center; 
+		margin-top: 5px; 
+	}
+	.payment-icon {
+		margin: 0 10px; 
+	}
+	.payment-icon img {
+		max-width: 50px; 
+		transition: transform 0.2s; 
+	}
+	.payment-icon img:hover {
+		transform: scale(1.1); 
+	}
+	.infostore a, .policy a {
+		color: black;
+		text-decoration: none;
+	}
+  </style>
+  <link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+	<!-- header -->
+	<section class="myheader">
+		<div class="row">
+			<div class="banner col-12">
+				<img src="https://img.upanh.tv/2024/10/24/BANG-QC-DAU-TRANG-FIGMA-3.png" alt="" class=" img-fluid d-block">
+			</div>
+		</div>
+		<div class="row">
+			<!-- logo -->
+			<div class="logo col-3 col-md-2">
+				<a href="./home.html">
+					<img src="https://img.upanh.tv/2024/10/24/Logo.png" alt="" class="float-start img-fluid" style="margin-left: 25px; height: 110px;">
+				</a>
+			</div>
+			<!-- search box -->
+			<div class="col-md-4 col-6">
+				<form class="search-wrapper">
+					<input type="search" placeholder="Tìm kiếm" name="search" class="search-input hide-placeholder">
+					<button type="submit" class="search-button">
+						<i class="fa fa-search text-white"></i>
+					</button>
+				</form>
+			</div>
+			<div class="col-md-2 col-1 d-none d-md-block">
+				<div class="phone-container">
+					<i class="fa fa-phone"></i>
+					<div class="d-none d-xl-inline-block">
+						<p>Hỗ trợ khách hàng<br>
+							+1 6506671441</p>
+					</div>
+				</div>
+			</div>
+			<!-- register/login -->
+			<div class="col-md-2 col-1 d-none d-md-block">
+				<div class="login-container">
+					<a href="./register.html"><i class="fa fa-user"></i></a>
+					<div class="d-none d-xl-inline-block">
+						<a href="./register.html">Đăng Ký</a>
+						<a href="./login.html" class="d-block">Đăng Nhập</a>
+					</div>
+				</div>
+			</div>
+			<!-- cart -->
+			<div class="col-md-2 col-1 py-3">
+				<button id="cartButton" class="btn btn-outline-dark">
+					<div class="cart-container">
+						<i class="fa fa-cart-plus mt-2"></i>
+						<span id="cartCount" class="badge bg-danger position-absolute translate-middle me-5">0</span>
+						<p class="d-none d-lg-block text-black ms-2 pt-4">Giỏ hàng</p>
+					</div> 
+				</button>
+				<div id="cartModal" class="modal fade bgmodal" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Giỏ hàng của bạn</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+							</div>
+							<div class="modal-body">
+								<div id="cartItems"></div>
+							</div>
+							<div class="modal-footer">
+								<div class="w-100 d-flex justify-content-between">
+								<span class="cart-total">Tổng tiền: 0₫</span>
+								<button id="checkoutButton">Thanh toán</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</section> <!--header-->
+	<section class="mymainmenu">
+		<div class="row">
+			<!-- navigation bar -->
+			<nav class="navbar navbar-expand-md">
+				<button class="navbar-toggler ms-5 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+					<span class="navbar-toggler-icon"></span>
+					<span class="text-dark d-none d-xxl-inline">Danh mục sản phẩm</span>
+				</button>
+				<div class="collapse navbar-collapse  ms-5" id="collapsibleNavbar">
+					<ul class="navbar-nav">
+						<!-- danh mục sản phẩm -->
+						<li class="nav-item dropdown">
+							<a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+								<i class="fa fa-bars d-none d-sm-inline-block"></i>
+								<span>DANH MỤC SẢN PHẨM</span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="./chamsocda.html">Chăm sóc da</a></li>
+								<li><a class="dropdown-item" href="./trangdiem.html">Trang điểm</a></li>
+								<li><a class="dropdown-item" href="./chamsoccothe.html">Chăm sóc cơ thể</a></li>
+								<li><a class="dropdown-item" href="./moi.html">Môi</a></li>
+							</ul>
+						</li>
+						<!-- các danh mục mở rộng -->
+						<li class="nav-item">
+							<a class="nav-link" href="./sanphambanchay.html">SẢN PHẨM BÁN CHẠY</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./flashsale.htm">FLASH SALE - CHỚP NHOÁNG</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./home.html#categories7">TIN TỨC & LÀM ĐẸP</a>
+						</li> 
+						<!-- mở rộng contact - login -->
+						<li class="nav-item phone-cont d-md-none d-block">
+							<i class="fa fa-phone"></i>
+							<p>+1 6506671441</p>
+						</li>
+						<li class="nav-item login-cont d-md-none d-block">
+							<i class="fa fa-user"></i>
+							<div class="d-inline">
+								<a href="./register.html">Đăng Ký
+									<span style="border-right: 2px solid black;"></span>
+								</a>
+								<a href="./login.html">Đăng Nhập</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</section>
+	<!--menu-->
+	<section class="myslider">
+		<div class="row mb-4">
+            <div class="col-12">
+              <div id="demo" class="carousel slide" data-bs-ride="carousel">
+      
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                  <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                  <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                </div>
+              
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="https://img.upanh.tv/2024/10/29/311d14e7c3fb9bef7.png" alt="slide 1" class="d-block w-100">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://img.upanh.tv/2024/10/29/24ead981fc82c5991.png" alt="slide 2" class="d-block w-100">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://img.upanh.tv/2024/10/29/1e35e33757a577ec6.png" alt="slide 3" class="d-block w-100">
+                  </div>
+                </div>
+              
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </button>
+              </div>
+            </div>
+         </div>
+        <div class="row">
+	</section> <!--slider-->
+	<section class="mycontent">
+		<div class="container my-3">
+			<h2 style="font-family:'Roboto Slab'; text-align: center; font-weight: bold;">DANH MỤC NỔI BẬT</h2>
+			<div class="row my-3 text-center mt-5 " style="font-family: 'Josefin Sans';">
+				<div class="col-3">
+					<div class="item" tabindex="-1" role="option" aria-describedby="slick-slide10" data-slick-index="0" aria-hidden="false" style="text-align: center;">
+						<a href="./trangdiem.html" title="Trang điểm" class="pos-relative d-flex align-items-center" tabindex="0" style="display: block; margin: 0 auto;">
+							<img class="img-fluid object-contain" src="https://img.upanh.tv/2024/10/23/trangdiem.png" width="150" height="150" alt="Trang điểm" style="display: block; margin-left: auto; margin-right: auto;">
+						</a>
+						<p class="mb-lg-5 mt-3">
+							<a href="./trangdiem.html" title="Trang điểm" class="text-decoration-none fw-bold" style="color: black; font-size: 22px; padding-left: 0; text-align: center;">
+								Trang điểm
+							</a>
+						</p>
+					</div>
+				</div> <!--Trang điểm-->
+				<div class="col-3">
+					<div class="item" tabindex="-1" role="option" aria-describedby="slick-slide10" data-slick-index="0" aria-hidden="false" style="text-align: center;">
+						<a href="./chamsocda.html" title="Chăm sóc da" class="pos-relative d-flex align-items-center" tabindex="0" style="display: block; margin: 0 auto;">
+							<img class="img-fluid object-contain" src="https://img.upanh.tv/2024/10/24/chamsocdaaa-1.png" width="150" height="150" alt="Chăm sóc da" style="display: block; margin-left: auto; margin-right: auto;">
+						</a>
+						<p class="mb-lg-5 mt-3">
+							<a href="./chamsocda.html" title="Chăm sóc da" class="text-decoration-none fw-bold" style="color: black; font-size: 22px; padding-left: 0; text-align: center;">
+								Chăm sóc da
+							</a>
+						</p>
+					</div>
+				</div><!--Chăm sóc da-->
+				<div class="col-3">
+					<div class="item" tabindex="-1" role="option" aria-describedby="slick-slide10" data-slick-index="0" aria-hidden="false" style="text-align: center;">
+						<a href="./chamsoccothe.html" title="Chăm sóc cơ thể" class="pos-relative d-flex align-items-center" tabindex="0" style="display: block; margin: 0 auto;">
+							<img class="img-fluid object-contain" src="https://img.upanh.tv/2024/10/24/chamsoccotheee-1.png" width="150" height="150" alt="Chăm sóc cơ thể" style="display: block; margin-left: auto; margin-right: auto;">
+						</a>
+						<p class="mb-lg-5 mt-3">
+							<a href="./chamsoccothe.html" title="Chăm sóc cơ thể" class="text-decoration-none fw-bold" style="color: black; font-size: 22px; padding-left: 0; text-align: center;">
+								Chăm sóc cơ thể
+							</a>
+						</p>
+					</div>
+				</div> <!--Chăm sóc cơ thể-->
+				<div class="col-3">
+					<div class="item" tabindex="-1" role="option" aria-describedby="slick-slide10" data-slick-index="0" aria-hidden="false" style="text-align: center;">
+						<a href="./PERFUME_NUOCHOA.html" title="Nước hoa" class="pos-relative d-flex align-items-center" tabindex="0" style="display: block; margin: 0 auto;">
+							<img class="img-fluid object-contain" src="https://img.upanh.tv/2024/10/24/nuochoa.png" width="150" height="150" alt="Nước hoa" style="display: block; margin-left: auto; margin-right: auto;">
+						</a>
+						<p class="mb-lg-5 mt-3">
+							<a href="./PERFUME_NUOCHOA.html" title="Nước hoa" class="text-decoration-none fw-bold" style="color: black; font-size: 22px; padding-left: 0; text-align: center;">
+								Nước hoa
+							</a>
+						</p>
+					</div>
+				</div> <!-- Nước hoa-->
+			</div>
+		</div>
+		</div> <!--Phần DANH MỤC NỔI BẬT-->
+		<div class="container mt-3  d-none d-md-block" style="background-color:#f8c0c0; border-radius: 20px;">
+			<div>
+				<p class="fs-2 fw-bold p-md-2" style="font-family:'Roboto Slab' ; text-align: center; ">TOP SẢN PHẨM BÁN CHẠY</p>
+			</div>
+			<!-- Bootstrap Carousel -->
+			<div id="topProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+				<div class="container-product">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="slide-one-content-items">
+								<div class="row">
+									<div class="col-md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/372034d5-8d65-4d55-863d-802f34e0da84.webp" class="product-img" alt="Dear Dahlia Product">
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>												
+												<h5 class="product-title">DEAR DAHLIA</h5>
+												<p class="product-description">Phấn Phủ Bột Kiềm Dầu Dear Dahlia Skin Paradise Soft Velvet Finishing Powder 12g</p>
+												<p class="product-price">1.219.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('Phấn Phủ Bột Kiềm Dầu Dear Dahlia Skin Paradise Soft Velvet Finishing Powder 12g', 'https://image.hsv-tech.io/600x600/bbx/common/372034d5-8d65-4d55-863d-802f34e0da84.webp', 1219000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/e427c1f8-4d90-4dd4-9319-2d1864d7dd34.webp" class="product-img" alt="CNP Product">
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>												
+
+												<h5 class="product-title">CNP</h5>
+												<p class="product-description">Tinh Chất Keo Ong Tái Tạo Phục Hồi Da CNP Laboratory Propolis Energy Ampule</p>
+												<p class="product-price">610.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('Tinh Chất Keo Ong Tái Tạo Phục Hồi Da CNP Laboratory Propolis Energy Ampule', 'https://image.hsv-tech.io/600x600/bbx/common/e427c1f8-4d90-4dd4-9319-2d1864d7dd34.webp', 1219000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/77523a4f-91e5-4830-98c2-c4c073a170ec.webp" class="product-img" alt="CLUB CLIO Product">
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>												
+
+												<h5 class="product-title">CLUB CLIO</h5>
+												<p class="product-description">(Ver. Luxury Koshort) Phấn Nước Clio Kiềm Dầu, Lâu Trôi Kill Cover Skin Fixer Cushion</p>
+												<p class="product-price">509.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('(Ver. Luxury Koshort) Phấn Nước Clio Kiềm Dầu, Lâu Trôi Kill Cover Skin Fixer Cushion', 'https://image.hsv-tech.io/600x600/bbx/common/77523a4f-91e5-4830-98c2-c4c073a170ec.webp', 509000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+									<div class="col-md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/61acf39d-ed32-4154-a8a0-2f5500378711.webp" class="product-img" alt="MAYBELLINE Product">
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>												
+
+												<h5 class="product-title">MAYBELLINE</h5>
+												<p class="product-description">(Phiên bản mới) Son Kem Bóng Maybelline Superstay Vinyl Ink 4.2ml</p> 
+												<p class="product-price">298.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('(Phiên bản mới) Son Kem Bóng Maybelline Superstay Vinyl Ink 4.2ml', 'ttps://image.hsv-tech.io/600x600/bbx/common/61acf39d-ed32-4154-a8a0-2f5500378711.webp', 298000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Trang tiếp theo-->
+						<div class="carousel-item ">
+							<div class="slide-one-content-items">
+								<div class="row">
+									<div class="col md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/2a119155-cea2-4147-9437-d72a0dccf315.webp" class="product-img" alt="L'OREAL PARIS Product">
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>
+
+												<h5 class="product-title">L'OREAL PARIS</h5>
+												<p class="product-description"> (Phiên bản mới) Mascara Làm Dày Mi L'Oreal Voluminous Lash Paradise 10Ml</p>
+												<p class="product-price">319.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('(Phiên bản mới) Mascara Làm Dày Mi L Oreal Voluminous Lash Paradise 10Ml', 'https://image.hsv-tech.io/600x600/bbx/common/2a119155-cea2-4147-9437-d72a0dccf315.web', 319000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+									<div class="col md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/e7e92572-54fb-4470-a783-c5adc51f81af.webp" class="product-img" alt="CNP Product">
+												
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>
+
+												<h5 class="product-title">CNP</h5>
+												<p class="product-description">Sữa Rửa Mặt CNP Làm Sạch Sâu Cho Da Mụn Ac-Pro Bubble Foam Cleanser 150ml</p>
+												<p class="product-price">530.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('Sữa Rửa Mặt CNP Làm Sạch Sâu Cho Da Mụn Ac-Pro Bubble Foam Cleanser 150ml', 'https://image.hsv-tech.io/600x600/bbx/common/e7e92572-54fb-4470-a783-c5adc51f81af.webp', 530000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+									<div class="col md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/b016af7b-5990-4a5c-b038-3ce8d4d5cd36.webp" class="product-img" alt="COCOON Product">
+												
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>
+												
+												<h5 class="product-title">COCOON</h5>
+												<p class="product-description"> (Phiên bản mới) Sữa Chống Nắng Cocoon Bí Đao Winter Melon Sun Fluid</p>
+												<p class="product-price">185.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('(Phiên bản mới) Sữa Chống Nắng Cocoon Bí Đao Winter Melon Sun Fluid', 'https://image.hsv-tech.io/600x600/bbx/common/b016af7b-5990-4a5c-b038-3ce8d4d5cd36.webp', 185000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+									<div class="col md-3">
+										<div class="slider-product-one-content-item-text">
+											<div class="product-card">
+												<img src="https://image.hsv-tech.io/600x600/bbx/common/b94d01ed-2ad1-407d-9ea7-f773f705ac1b.webp" class="product-img" alt="L'OREAL PARIS Product">
+												<!-- Nút trái tim yêu thích -->
+												<button type="button" class="favorite-button">
+													<svg width="24" viewBox="0 0 30 26" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+														<path d="M14.7858 26C14.2619 26 13.738 25.8422 13.2869 25.5124C11.5696 24.2648 8.26609 21.7408 5.3846 18.7579C1.81912 15.0436 0 11.7739 0 9.03475C0 4.04413 3.85654 0 8.58626 0C10.9438 0 13.1704 1.00386 14.7858 2.79647C16.4158 1.00386 18.6424 0 20.9999 0C25.7297 0 29.5862 4.04413 29.5862 9.03475C29.5862 11.7739 27.7671 15.0436 24.1871 18.7579C21.3201 21.7408 18.002 24.2791 16.2848 25.5124C15.8482 25.8422 15.3097 26 14.7858 26ZM8.58626 1.00386C4.40955 1.00386 1.01871 4.60342 1.01871 9.03475C1.01871 14.9288 10.8711 22.5295 13.8981 24.7093C14.4366 25.0965 15.1497 25.0965 15.6881 24.7093C18.7151 22.5295 28.5675 14.9288 28.5675 9.03475C28.5675 4.60342 25.1767 1.00386 20.9999 1.00386C18.7588 1.00386 16.6341 2.05074 15.1933 3.88638L14.7858 4.38831L14.3783 3.88638C12.9522 2.05074 10.8274 1.00386 8.58626 1.00386Z" 
+															  fill="black" stroke="pink" stroke-width="2"></path>
+													</svg>
+												</button>											
+												<h5 class="product-title">L'OREAL PARIS</h5>
+												<p class="product-description">Tinh Chất Cấp Ẩm Căng Mướt Da L'Oreal Paris Revitalift Hyaluronic Acid Serum</p>
+												<p class="product-price">229.000<sup>đ</sup> </p>
+												<button class="button-addtocart" onclick="addToCart('Tinh Chất Cấp Ẩm Căng Mướt Da L Oreal Paris Revitalift Hyaluronic Acid Serum', 'https://image.hsv-tech.io/600x600/bbx/common/b94d01ed-2ad1-407d-9ea7-f773f705ac1b.webp', 229000)">
+													<i class="fa fa-cart-plus"></i>
+													THÊM VÀO GIỎ HÀNG
+												</button>
+												<p class="mt-2">★★★★★</p>
+											</div>	
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-control-prev " type="button" data-bs-target="#topProductsCarousel" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#topProductsCarousel" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div> <!--PHẦN TOP SẢN PHẨM BÁN CHẠY-->
+		<div class="container my-4">
+			<p class="fs-2 fw-bold p-md-2" style="font-family:'Roboto Slab' ; text-align: center; ">TÌM KIẾM NHIỀU NHẤT</p>
+			<div class="ant-space ant-space-horizontal ant-space-align-center keyword-section" style="font-family: 'Roboto Slab'; font-weight: bold;">
+				<div class="ant-space-item">
+					<a role="presentation" href="./PERFUME_NUOCHOA.html" style="color: rgb(238, 187, 196);">
+						<div class="keyword-item">NƯỚC HOA</div>
+					</a>
+				</div>
+				<div class="ant-space-item">
+					<a role="presentation" href="./chamsocda.html" style="color: rgb(238, 187, 196);">
+						<div class="keyword-item">SỬA RỬA MẶT</div>
+					</a>
+				</div>
+				<div class="ant-space-item">
+					<a role="presentation" href="./chamsocda2.html" style="color: rgb(238, 187, 196);">
+						<div class="keyword-item">TONER</div>
+					</a>
+				</div>
+				<div class="ant-space-item">
+					<a role="presentation" href="./moi.html" style="color: rgb(238, 187, 196);">
+						<div class="keyword-item">SON</div>
+					</a>
+				</div>
+				<div class="ant-space-item">
+					<a role="presentation" href="./trangdiem.html" style="color: rgb(238, 187, 196);">
+						<div class="keyword-item">PHẤN</div>
+					</a>
+				</div>
+			</div>
+		</div> <!--TÌM KIẾM NHIỀU NHẤT-->
+		<div class="container">
+			<div class="mt-5">
+				<div class="wrapper-container text-center">
+					<div class="ant-row row" style="margin-left: -10px; margin-right: -10px; row-gap: 20px;">
+						<div class="col-md-4">
+							<div class="ant-image">
+								<img loading="lazy" alt="freshian-my-pham-thuan-chay-cao-cap" class="ant-image-img explore-image radius-5" src="https://image.hsv-tech.io/700x0/bbx/common/35a6a870-234e-408d-a4d0-dd156d7da10b.webp">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="ant-image">
+								<img loading="lazy" alt="banila-co-km" class="ant-image-img explore-image radius-5" src="https://image.hsv-tech.io/700x0/bbx/common/2daf1332-841b-42fa-8ea1-60d5a423354d.webp">
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="ant-image">
+								<img loading="lazy" alt="club-clio-km" class="ant-image-img explore-image radius-5" src="https://image.hsv-tech.io/700x0/bbx/common/90301619-dc0d-4a05-a713-8e7ec1b2470b.webp">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+		</div> <!--HÌNH ẢNH QUẢNG CÁO-->
+		<div class="container mt-5" id="categories7">
+			<div>
+				<h2 style="font-family:'Roboto Slab'; text-align: center; font-weight: bold;">TIN TỨC & LÀM ĐẸP</h3>
+			</div>
+			<div>
+				<div class="row">
+					<div class="col-12 col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+						<div class="owl-item active">
+							<div class="blog_items">
+								<div class="myblog" onclick="window.location.href='/review-top-5-serum-tri-mun-tot-gia-binh-dan';">
+									<div class="image-blog-left">
+										<a href="https://www.eucerin.vn/van-de-cua-da/da-bi-mun-trung-ca/rua-mat-dung-cach"> 
+											<picture>
+												<img class="hover-image small-image" src="https://img.upanh.tv/2024/10/29/Bong-Tay-Trang-Chat--1.webp">
+											</picture>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="content_blog clearfix card-body px-0 py-2">
+							<a class="link" href="https://www.eucerin.vn/van-de-cua-da/da-bi-mun-trung-ca/rua-mat-dung-cach" title="6 bước rửa mặt đúng nhất dành cho mọi loại da">6 bước rửa mặt đúng nhất dành cho mọi loại da</a>
+							<h6 style="color:#ed8d8d">G.N.T COSMETIC</h6>
+						</div>
+						<p class="justify">
+							<span class="art-summary">Rửa mặt là bước cơ bản và cần thiết nhất trong quy trình chăm sóc da. Thế nhưng,...</span> <br>
+							<a class="button_custome_35 link fs-6" href="https://www.eucerin.vn/van-de-cua-da/da-bi-mun-trung-ca/rua-mat-dung-cach" title="Đọc tiếp">Đọc tiếp</a>
+						</p>
+					</div>
+				
+					<!-- Lặp lại cho các cột khác, thay đổi chỉ phần hình ảnh -->
+					<div class="col-12 col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+						<div class="owl-item active">
+							<div class="blog_items">
+								<div class="myblog" onclick="window.location.href='/best-scalp-care-products-treatments-tips';">
+									<div class="image-blog-left">
+										<a href="https://bazaarvietnam.vn/thi-ra-day-la-ly-do-ban-can-phai-chai-dau-hang-ngay/">
+											<picture>
+												<img class="hover-image small-image" src="https://img.upanh.tv/2024/10/29/vi-sao-nen-chai-dau-hang-ngay-00-thumb-cham-soc-toc559047cf163c0579.jpg">
+											</picture>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="content_blog clearfix card-body px-0 py-2">
+							<a class="link" href="https://bazaarvietnam.vn/thi-ra-day-la-ly-do-ban-can-phai-chai-dau-hang-ngay/" title="Khám phá lợi ích bất ngờ từ việc chải đầu hàng ngày">Khám phá lợi ích bất ngờ từ việc chải đầu hàng ngày</a>
+							<h6 style="color:#ed8d8d">G.N.T COSMETIC</h6>
+						</div>
+						<p class="justify">
+							<span class="art-summary">Nếu không phải ra đường thì chắc cũng sẽ có nhiều bạn gái bỏ qua việc chải tóc. Nhưng bạn có biết chải đầu hằng ngày là...</span> <br>
+							<a class="button_custome_35 link fs-6" href="https://bazaarvietnam.vn/thi-ra-day-la-ly-do-ban-can-phai-chai-dau-hang-ngay/" title="Đọc tiếp">Đọc tiếp</a>
+						</p>
+					</div>
+				
+					<div class="col-12 col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+						<div class="owl-item active">
+							<div class="blog_items">
+								<div class="myblog" onclick="window.location.href='/an-uong-lanh-manh/thong-tin-dinh-duong/thuc-pham-giau-omega-3/';">
+									<div class="image-blog-left">
+										<a href="https://hellobacsi.com/an-uong-lanh-manh/thong-tin-dinh-duong/thuc-pham-giau-omega-3/">
+											<picture>
+												<img class="hover-image small-image" src="https://img.upanh.tv/2024/10/29/thuc-pham-giau-omega-3-Lan1fa08ee495659ce7.jpg">
+											</picture>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="content_blog clearfix card-body px-0 py-2">
+							<a class="link" href="https://hellobacsi.com/an-uong-lanh-manh/thong-tin-dinh-duong/thuc-pham-giau-omega-3/" title="Mách bạn 9 thực phẩm giàu omega-3 phù hợp cho cả gia đình">Mách bạn 9 thực phẩm giàu omega-3 phù hợp cho cả gia đình</a>
+							<h6 style="color:#ed8d8d">G.N.T COSMETIC</h6>
+						</div>
+						<p class="justify">
+							<span class="art-summary">Omega-3 là gì? Axit béo omega-3 rất quan trọng đối với hoạt động bình thường...</span> <br>
+							<a class="button_custome_35 link fs-6" href="https://hellobacsi.com/an-uong-lanh-manh/thong-tin-dinh-duong/thuc-pham-giau-omega-3/" title="Đọc tiếp">Đọc tiếp</a>
+						</p>
+					</div>
+				
+					<div class="col-12 col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+						<div class="owl-item active">
+							<div class="blog_items">
+								<div class="myblog" onclick="window.location.href='/5-loi-ich-bat-ngo-cua-trung-trong-cham-soc-da';">
+									<div class="image-blog-left">
+										<a href="https://laodong.vn/lam-dep/5-loi-ich-bat-ngo-cua-trung-trong-cham-soc-da-1408106.ldo">
+											<picture>
+												<img class="hover-image small-image" src="https://img.upanh.tv/2024/10/29/Cham-Soc-Da49fcf92bbbf80c93.jpg">
+											</picture>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="content_blog clearfix card-body px-0 py-2">
+							<a class="link" href="https://laodong.vn/lam-dep/5-loi-ich-bat-ngo-cua-trung-trong-cham-soc-da-1408106.ldo" title="5 lợi ích bất ngờ của trứng trong chăm sóc da">5 lợi ích bất ngờ của trứng trong chăm sóc da</a>
+							<h6 style="color:#ed8d8d">G.N.T COSMETIC</h6>
+						</div>
+						<p class="justify">
+							<span class="art-summary">Protein và vitamin có trong trứng giúp da luôn đủ nước và làm chậm quá trình lão hoá...</span> <br>
+							<a class="button_custome_35 link fs-6" href="https://laodong.vn/lam-dep/5-loi-ich-bat-ngo-cua-trung-trong-cham-soc-da-1408106.ldo" title="Đọc tiếp">Đọc tiếp</a>
+						</p>
+					</div>
+				</div>
+				
+			</div>
+		</div> <!--TIN Tức LÀM ĐẸP-->
+	</section><!--content-->
+	<section class="myfooter">
+		<div class="footer">
+			<!-- heading footer -->
+			<div class="row">
+				<div class="col-md-6 col-12">
+					<div class="notification mt-4">
+						<h2 class="text-center">ĐĂNG KÝ NHẬN THÔNG BÁO</h2>
+						<p class="text-center">Chương trình khuyến mãi | Hợp tác kinh doanh</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<form class="email-field mb-md-0 mb-4">
+						<input type="email" placeholder="Nhập e-mail của bạn..." class="email-input">
+						<button type="email" class="submit-button">GỬI</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 infostore">
+					<h5>Thông tin cửa hàng</h5>
+					<ul class="list-unstyled">
+						<li><a href="./home.html">Trang chủ</a></li>
+						<li><a href="#">Thông tin</a></li>
+						<li><a href="#">Tuyển dụng</a></li>
+						<li><a href="#">Về GNT</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 policy  mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Chính sách</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Phương thức vận chuyển</a></li>
+						<li><a href="#">Chính sách đổi trả</a></li>
+						<li><a href="#">Hỗ trợ khách hàng</a></li>
+						<li><a href="#">Chính sách bảo mật</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3  mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Thông tin liên hệ</h5>
+					<p><i class="fas fa-phone-alt mr-2"></i> 0868 307 030</p>
+					<p><i class="fas fa-clock mr-2"></i> 08:30 - 21:30 (T2-T7)</p>
+					<h5>Kết nối với chúng tôi</h5>
+					<div>
+						<i class="fab fa-facebook mr-2"></i>
+						<i class="fab fa-instagram mr-2"></i>
+						<i class="fab fa-tiktok mr-2"></i>
+					</div>
+	
+				</div>
+				<div class="col-lg-3 col-md-6 col-12 mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Hệ thống cửa hàng</h5>
+					<p>Chi nhánh 1: 470 Trần Đại Nghĩa, Ngũ Hành Sơn, TP. Đà Nẵng</p>
+					<p>Chi nhánh 2: 290 Phạm Ngũ Lão, Phú Hội, TP. Huế</p>
+				</div>
+			</div>
+			<div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-center">PHƯƠNG THỨC THANH TOÁN</h5>
+                    <div class="text-center">
+                        <div class="container text-center mt-3">
+                            <div class="justify-content-center mt-4">
+                                <div class="d-flex justify-content-center payment-container">
+                                    <a href="https://www.visa.com.vn/vi_VN/pay-with-visa/featured-technologies/mobile-payments.html" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/VISA-Logo-1976.png" alt="Visa Payment" class="img-fluid" style="max-width: 80px;">
+                                    </a>
+                                    <a href="https://developers.momo.vn/v3/vi/docs/payment/guides/payment-with-aio/" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/mom.jpg" alt="MoMo Payment" class="img-fluid"  style="width: 40px;">
+                                    </a>
+                                    <a href="https://vivnpay.vn/blog/vnpayqr-vi-vnpay" target="_blank" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/vnpay.png" alt="VNPay Payment" class="img-fluid"  style="width: 40px;">
+                                    </a>
+                                    <a href="https://zalopay.vn/" target="_blank" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/Logo-ZaloPay-Square.jpg" alt="ZaloPay Payment" class="img-fluid" style="width: 40px;">
+                                    </a>
+                                    <a href="https://ghn.vn/" target="_blank" class="payment-icon" style="margin-top: -12px">
+                                        <img src="https://img.upanh.tv/2024/11/26/Logo-GHN-Orange.webp?fbclid=IwY2xjawGydJdleHRuA2FlbQIxMAABHVDd1i3r_hU6MLHztyuS8qY2-bJ5YRG9bJD3_c4ZtwsQuZ4edsM575VIXA_aem_Cr4WcULiY3KHxxwzT3CofA" alt="GHN" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+            </div>			
+			<div class="row">
+				<div class="text-center mt-4 border-top border-dark">
+					<p class="pt-4 pt-lg-5">© Bản quyền thuộc công ty G.N.T COSMETICS | Cung cấp bởi Sapo</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	 <!--footer-->
+	 <script src="./script2.js"></script>
+</body>
+</html>

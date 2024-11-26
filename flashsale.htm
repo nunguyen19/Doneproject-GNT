@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJxj6p3P6x2xkZk6dhwLg6o6v5xX9/M6vF5Jz/YxQQj7zWpaQf0vc3QNj7g3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb33b6kD6oBToRw2pPp6kxAzbB6aw4ksE3RZOSnP+Xf4u0Yc6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyg7k7t3oJm6QLzB4KvK+mS6T4lYFkE0O2/JRaD1n9X5W6M/ywGjVJo" crossorigin="anonymous"></script>
+
+<title>FLASH SALE</title>
+<!-- kết nối file css -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- header -->
+         <div class="">
+             <div class="row">
+                 <!-- banner -->
+                 <div class="banner col-12">
+                     <img src="https://img.upanh.tv/2024/10/24/BANG-QC-DAU-TRANG-FIGMA-3.png" alt="" class=" img-fluid d-block">
+                 </div>
+             </div>
+             <div class="row">
+                 <!-- logo -->
+                 <div class="col-3 col-md-2">
+                     <a href="./home.html">
+                         <img src="https://img.upanh.tv/2024/10/24/Logo.png" alt="" class="float-start img-fluid" style="margin-left: 25px; height: 110px;">
+                     </a>
+                 </div>
+                 <!-- search box -->
+                 <div class="col-md-4 col-6">
+                     <form class="search-wrapper">
+                         <input type="search" placeholder="Tìm kiếm" name="search" class="search-input hide-placeholder">
+                         <button type="submit" class="search-button">
+                             <i class="fa fa-search text-white"></i>
+                         </button>
+                     </form>
+                 </div>
+                 <!-- contact -->
+                <div class="col-md-2 col-1 d-none d-md-block">
+                    <div class="phone-container">
+                        <i class="fa fa-phone"></i>
+                        <div class="d-none d-xl-inline-block">
+                            <p>Hỗ trợ khách hàng<br>
+                                +1 6506671441</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- register/login -->
+                <div class="col-md-2 col-1 d-none d-md-block">
+                    <div class="login-container">
+                        <a href="./register.html"><i class="fa fa-user"></i></a>
+                        <div class="d-none d-xl-inline-block">
+                            <a href="./register.html">Đăng Ký</a>
+                            <a href="./login.html" class="d-block">Đăng Nhập</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- cart -->
+                <div class="col-md-2 col-1 py-3">
+                    <button id="cartButton" class="btn btn-outline-dark">
+                        <div class="cart-container">
+                            <i class="fa fa-cart-plus mt-2"></i>
+                            <span id="cartCount" class="badge bg-danger position-absolute translate-middle me-5">0</span>
+                            <p class="d-none d-lg-block text-black ms-2 pt-4">Giỏ hàng</p>
+                        </div> 
+                    </button>
+                    <div id="cartModal" class="modal fade bgmodal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Giỏ hàng của bạn</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="cartItems"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="w-100 d-flex justify-content-between">
+                                    <span class="cart-total">Tổng tiền: 0₫</span>
+                                    <button id="checkoutButton">Thanh toán</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <div class="row">
+                 <!-- navigation bar -->
+                 <nav class="navbar navbar-expand-md">
+                     <button class="navbar-toggler ms-5 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                         <span class="navbar-toggler-icon"></span>
+                         <span class="text-dark d-none d-xxl-inline">Danh mục sản phẩm</span>
+                     </button>
+                     <div class="collapse navbar-collapse  ms-5" id="collapsibleNavbar">
+                         <ul class="navbar-nav">
+                             <!-- danh mục sản phẩm -->
+                             <li class="nav-item dropdown">
+                                 <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                                     <i class="fa fa-bars d-none d-sm-inline-block"></i>
+                                     <span>DANH MỤC SẢN PHẨM</span>
+                                 </a>
+                                 <ul class="dropdown-menu">
+                                     <li><a class="dropdown-item" href="#">Chăm sóc da</a></li>
+                                     <li><a class="dropdown-item" href="#">Trang điểm</a></li>
+                                     <li><a class="dropdown-item" href="#">Chăm sóc cơ thể</a></li>
+                                     <li><a class="dropdown-item" href="#">Môi</a></li>
+                                 </ul>
+                             </li>
+                             <!-- các danh mục mở rộng -->
+                             <li class="nav-item">
+                                 <a class="nav-link" href="./sanphambanchay.html">SẢN PHẨM BÁN CHẠY</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="./flashsale.htm">FLASH SALE - CHỚP NHOÁNG</a>
+                             </li>
+                             <li class="nav-item">
+                                 <a class="nav-link" href="./home.html#categories7">TIN TỨC & LÀM ĐẸP</a>
+                             </li> 
+                             <!-- mở rộng contact - login -->
+                             <li class="nav-item phone-cont d-md-none d-block">
+                                 <i class="fa fa-phone"></i>
+                                 <p>+1 6506671441</p>
+                             </li>
+                             <li class="nav-item login-cont d-md-none d-block">
+                                 <i class="fa fa-user"></i>
+                                 <div class="d-inline">
+                                     <a href="./register.html">Đăng Ký
+                                         <span style="border-right: 2px solid black;"></span>
+                                     </a>
+                                     <a href="./login.html">Đăng Nhập</a>
+                                 </div>
+                             </li>
+                         </ul>
+                     </div>
+                 </nav>
+             </div>
+         </div>
+         </div>
+    <!-- end header -->
+    <!-- body -->
+    <div class="body-flashsale-banner">
+        <div class="body-flashsale-banner container-fluid">
+            <img src="https://img.upanh.tv/2024/11/22/banner-website-chao-dai-le_acf206dcd14448f68be28f4ab8f0b7ec.jpg" alt="Ảnh trang đầu" class="img-fluid">
+        </div>
+    </div>
+    <div class="category-body-flashsale-container">
+        <div class="category-body-flashsale-item">MUA LÀ CÓ QUÀ</div>
+        <div class="category-body-flashsale-item">GIẢM GIÁ</div>
+        <div class="category-body-flashsale-item">SON MÔI</div>
+        <div class="category-body-flashsale-item">PHẤN TRANG ĐIỂM</div>
+        <div class="category-body-flashsale-item">CHĂM SÓC DA</div>
+    </div>
+    <div class="container-fluid">
+        <div class="container my-5">
+            <div class="voucher-wrapper">
+              <!-- Card 1 -->
+              <div class="voucher-card">
+                <h2 class="text-center justify-content-center align-items-center fw-bold ">NHẬP MÃ NHẬN VOUCHER</h2>
+              </div>
+              <!-- Card 2 -->
+              <div class="voucher-card">
+                <img src="https://img.upanh.tv/2024/11/23/U-DAI-THANG-2-1.png" alt="Voucher 1">
+              </div>
+              <!-- Card 3 -->
+              <div class="voucher-card">
+                <img src="https://img.upanh.tv/2024/11/23/U-DAI-THANG-1-1.png" alt="Voucher 2">
+              </div>
+              <!-- Card 4 -->
+              <div class="voucher-card">
+                <img src="https://img.upanh.tv/2024/11/23/1-1.png" alt="Voucher 3">
+              </div>
+            </div>
+          </div>
+     </div>
+     <div class="container-fluid w-100">
+        <div class="body-container-flasssale-agift">
+                <img src="https://img.upanh.tv/2024/11/21/U-DAI-THANG-7.png" alt="GIFT" class="img-fluid w-100">
+            </div>
+        </div>
+     </div>
+<!--full săn deal-->
+    <div class="body-container-flasssale mt-4 text-center p-4">
+       <div class="row content-body-container-flassale justify-content-around align-content-center">
+            <div class="title-content-body-container-flassale fw-bold fs-1 ">
+                SĂN DEAL KHỦNG - BÙNG FLASH SALE
+            </div>
+            <!-- 1 thẻ -->
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 25%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-3 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/loreal-paris-glycolic-bright-glowing-daily-cleanser-foam-100ml-1.webp" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Sữa rửa mặt sáng da Loreal Paris</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        380.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        450.000đ
+                    </div>
+                </div>
+            </div>
+            <!-- hết 1 thẻ -->
+            <!-- 2-->
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 15%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/serum-dang-xit-cap-am-diu-da-d-alba-italian-white-truffle-vital-spray-100ml-66aae884cd5d0-01082024084436.webp" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Serum xịt dưỡng ẩm d'Alba First Pray</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        420.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        580.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 5%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/1d2e198c1500f30496eabcfffae073e3_6a10388865f64fe8adbeb6647123edca_grande.webp" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Dưỡng thể Vaseline Bright Gluta Hya</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        159.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        199.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 30%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/hadalabo_sua_rua_mat_advanced_nourish_hyaluronic_acid_cleanser__2__47b6e187575143e78dee0c2336cae509.webp" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Sữa rửa mặt Hada Labo chống tia UV </div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        180.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        320.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 30%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/8a0d1b26c2c03f27fd35d763a90ac8c6.jpg" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Kem Lót Smash Kiềm Dầu than tre</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        770.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        860.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 20%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/vn-11134207-7qukw-lk7k39egq7sy2f_tn.jpg" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Phấn phủ Innisfree No Sebum Pro Dee</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        290.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        399.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 10%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/Skin1004-Madagascar-Centella-Cream.jpg" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Kem chống nắng Centella B200 cấp ẩm</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        599.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        650.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 40%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/Cach-Phan-Biet-Cac-Loai-Son-Moi-Pho-Bien-Hien-Nay.png" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Son kem lỳ Cathy Doll Hồng P914</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        299.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        480.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 30%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/son-moi.jpg" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Son kem lỳ MAC Ruby Woo đỏ đô </div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        449.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        750.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        SALE 20%
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/son-dior-rouge-velvet-mau-999-mau-do-tuoi-4.jpg" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Son thỏi Dior Rouge Velvet Kapior 999</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        720.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        990.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        FREESHIP
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/images.jpg" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Kem dưỡng da YSL Beauté Pure Shots</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        990.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        1.200.000đ
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 card-body-container-flassale justify-content-around align-content-center">
+                <div class="top-card-body-container-flassale border-3 rounded-top-4" style="height: 80%;">
+                    <div class="sale-top-card-body-container-flassale rounded-pill mb-2 mt-1 ms-1 justify-content-center align-content-center" style="width: 40%; height: 20%;">
+                        FREESHIP
+                    </div>
+                    <div class="main-top-card-body-container-flassale row justify-content-around align-content-center" style="width: 100%; height: 70%;">
+                        <div class="img-top-card-body-container-flassale col-8 p-1 rounded-top-4">
+                            <img src="https://img.upanh.tv/2024/11/23/S6b382f7e72e147088d013b065c5f2f6bZ.jpg_720x720q80.jpg" alt="" class="img-fluid rounded-5" style="width: 90%; height: 100%;">
+                        </div>
+                        <div class="content-top-card-body-container-flassale col-3 d-flex fw-bolder text-center fs-6 me-1">Tinh chất dưỡng da Dior Capture Super</div>
+                    </div>
+                </div>
+                <div class="bottom-card-body-container-flassale border-3 rounded-bottom-4 d-flex justify-content-around align-content-center" style="height: 17%;">
+                    <div class="m-auto fs-4 fw-bold ">
+                        880.000đ
+                    </div>
+                    <div class="m-auto text-decoration-line-through">
+                        950.000đ
+                    </div>
+                </div>
+            </div>
+       </div>
+    </div>
+<!--full săn deal-->
+<!-- end body -->
+ <!-- footer -->
+    <div class="footer">
+        <!-- heading footer -->
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="notification mt-4">
+                    <h2 class="text-center">ĐĂNG KÝ NHẬN THÔNG BÁO</h2>
+                    <p class="text-center">Chương trình khuyến mãi | Hợp tác kinh doanh</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form class="email-field mb-md-0 mb-4">
+                    <input type="email" placeholder="Nhập e-mail của bạn..." class="email-input">
+                    <button type="email" class="submit-button">GỬI</button>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 infostore">
+                <h5>Thông tin cửa hàng</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Trang chủ</a></li>
+                    <li><a href="#">Thông tin</a></li>
+                    <li><a href="#">Tuyển dụng</a></li>
+                    <li><a href="#">Về GNT</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 policy  mt-4 mb-4 mt-md-0 mb-md-0">
+                <h5>Chính sách</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Phương thức vận chuyển</a></li>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Hỗ trợ khách hàng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3  mt-4 mb-4 mt-md-0 mb-md-0">
+                <h5>Thông tin liên hệ</h5>
+                <p><i class="fas fa-phone-alt mr-2"></i> 0868 307 030</p>
+                <p><i class="fas fa-clock mr-2"></i> 08:30 - 21:30 (T2-T7)</p>
+                <h5>Kết nối với chúng tôi</h5>
+                <div>
+                    <i class="fab fa-facebook mr-2"></i>
+                    <i class="fab fa-instagram mr-2"></i>
+                    <i class="fab fa-tiktok mr-2"></i>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mt-4 mb-4 mt-md-0 mb-md-0">
+                <h5>Hệ thống cửa hàng</h5>
+                <p>Chi nhánh 1: 470 Trần Đại Nghĩa, Ngũ Hành Sơn, TP. Đà Nẵng</p>
+                <p>Chi nhánh 2: 290 Phạm Ngũ Lão, Phú Hội, TP. Huế</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-center">PHƯƠNG THỨC THANH TOÁN</h5>
+                <div class="text-center">
+                    <div class="container text-center mt-3">
+                        <div class="justify-content-center mt-4">
+                            <div class="d-flex justify-content-center payment-container">
+                                <a href="https://www.visa.com.vn/vi_VN/pay-with-visa/featured-technologies/mobile-payments.html" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/VISA-Logo-1976.png" alt="Visa Payment" class="img-fluid" style="max-width: 80px;">
+                                </a>
+                                <a href="https://developers.momo.vn/v3/vi/docs/payment/guides/payment-with-aio/" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/mom.jpg" alt="MoMo Payment" class="img-fluid"  style="width: 40px;">
+                                </a>
+                                <a href="https://vivnpay.vn/blog/vnpayqr-vi-vnpay" target="_blank" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/vnpay.png" alt="VNPay Payment" class="img-fluid"  style="width: 40px;">
+                                </a>
+                                <a href="https://zalopay.vn/" target="_blank" class="payment-icon">
+                                    <img src="https://img.upanh.tv/2024/10/30/Logo-ZaloPay-Square.jpg" alt="ZaloPay Payment" class="img-fluid" style="width: 40px;">
+                                </a>
+                                <a href="https://ghn.vn/" target="_blank" class="payment-icon" style="margin-top: -12px">
+                                    <img src="https://img.upanh.tv/2024/11/26/Logo-GHN-Orange.webp?fbclid=IwY2xjawGydJdleHRuA2FlbQIxMAABHVDd1i3r_hU6MLHztyuS8qY2-bJ5YRG9bJD3_c4ZtwsQuZ4edsM575VIXA_aem_Cr4WcULiY3KHxxwzT3CofA" alt="GHN" class="img-fluid">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>	
+        </div>			
+        <div class="row">
+            <div class="text-center mt-4 border-top border-dark">
+                <p class="pt-4 pt-lg-5">© Bản quyền thuộc công ty G.N.T COSMETICS | Cung cấp bởi Sapo</p>
+            </div>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script src="./script2.js"></script>
+</body>
+</html>

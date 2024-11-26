@@ -1,0 +1,205 @@
+* {
+    box-sizing: border-box;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.banner {
+    background-color: rgb(241, 218, 217);
+    max-width: 100%;
+}
+/* search */
+.search-wrapper, .email-field {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 15px;
+    border-radius: 30px;
+    overflow: hidden;
+    height: 43px;
+    border: 2px solid rgb(210, 115, 113)
+}
+.search-input, .email-input {
+    border: none;
+    padding: 5px 10px;
+    font-size: 20px;
+    color: #666;
+    width: 100%;
+}
+.search-input:focus, .email-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+.search-button, .submit-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: none;
+    background-color: #E8A5A5;
+    padding: 0 30px;
+    transition: background-color 0.3s;
+}
+.search-button:hover, .submit-button:hover {
+    background-color: #d89393;
+}
+.search-icon {
+    color: white;
+    font-size: 15px;
+}
+    @media (max-width: 500px) {
+        .hide-placeholder::placeholder {
+            color: transparent;
+        }
+    }
+/* phonecontainer, login container */
+.phone-container, .login-container {
+    margin-top: 30px;
+    margin-left: 0px;
+    text-align: center;
+}
+.phone-container i, .login-container i {
+    color: rgb(213, 153, 158);
+    font-size: 38px;
+    transform: rotateY(180deg);
+}
+.login-container a, .login-cont a{
+    text-decoration: none;
+    color: black;
+}
+/* phone cont, login cont */
+.phone-cont, .login-cont {
+    justify-content: flex-start;
+}
+.phone-cont i, .login-cont i {
+    transform: rotateY(180deg);
+    font-size: 30px;
+    color: rgb(213, 153, 158);
+}
+.phone-cont p{
+    display: inline-block;
+}
+/* navbar */
+.navbar {
+    background-color: rgb(247, 205, 204);
+}
+.nav-link {
+    color: black;
+}
+.navbar-nav a:hover{
+color: hotpink;
+}
+/* footer */
+.footer {
+    background-color: #FABFC0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.payment-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 5px; 
+}
+.payment-icon {
+    margin: 0 10px; 
+}
+.payment-icon img {
+    max-width: 50px; 
+    transition: transform 0.2s; 
+}
+.payment-icon img:hover {
+    transform: scale(1.1); 
+}
+.infostore a, .policy a {
+    color: black;
+    text-decoration: none;
+/*nuochoa */
+}
+.perfume-banner-container {
+    background-color: rgb(152, 83, 81);
+    max-width: 100%;
+}
+
+.container-main-perfume {
+    background-image: url('https://img.upanh.tv/2024/11/25/snapedit_1732470307142.png');
+    height: auto;
+    width: 100%;
+    background-size: cover; /* Scales the image to cover the container */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the image */
+    padding-bottom: 100px;
+}
+.container-text-perfume {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+.background-section {
+    background-image: url('https://img.upanh.tv/2024/11/25/snapedit_1732470307142.png');
+    background-size: cover;
+    background-position: center;
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* Hộp sản phẩm */
+.container-product-card-perfume {
+    width: 35%;
+    height: fit-content;
+    background-color: #ffecec;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    min-height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+    flex-wrap: wrap; /* Tự động xuống dòng khi không còn đủ chỗ */
+}
+@media (max-width: 768px) {
+    .container-product-card-perfume {
+        width: 90%; /* Rộng hơn trên màn hình nhỏ */
+    }
+}
+
+    .container-product-card-perfume img {
+    border: 2px solid #fac7d3;
+    background-color: white; /* Nền trắng bên trong viền */
+    box-shadow:0 4px 6px rgba(228, 139, 159, 0.5);
+}
+
+ /* Thông tin sản phẩm */
+ .perfume-product-info h4 {
+    font-weight: bold;
+    color: #d7385e;
+}
+
+.perfume-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.perfume-size {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000000;
+}
+
+.perfume-freeship {
+    background-color: #ffe4e1;
+    color: #d7385e;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.perfume-details {
+    row-gap: 5px; /* Khoảng cách giữa các hàng khi xuống dòng */
+    column-gap: 5px; /* Khoảng cách giữa các cột nếu còn trong cùng một dòng */
+}
+
+
+
+

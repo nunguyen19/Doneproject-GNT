@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Trang điểm</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .banner {
+        background-color: rgb(241, 218, 217);
+        max-width: 100%;
+    }
+    /* search */
+    .search-wrapper, .email-field {
+        position: relative;
+        margin-top: 30px;
+        margin-left: 15px;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 43px;
+        border: 2px solid rgb(210, 115, 113)
+    }
+    .search-input, .email-input {
+        border: none;
+        padding: 5px 10px;
+        font-size: 20px;
+        color: #666;
+        width: 100%;
+    }
+    .search-input:focus, .email-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .search-button, .submit-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: none;
+        background-color: #E8A5A5;
+        padding: 0 30px;
+        transition: background-color 0.3s;
+    }
+    .search-button:hover, .submit-button:hover {
+        background-color: #d89393;
+    }
+    .search-icon {
+        color: white;
+        font-size: 15px;
+    }
+        @media (max-width: 500px) {
+            .hide-placeholder::placeholder {
+                color: transparent;
+            }
+        }
+    /* phonecontainer, login container */
+    .phone-container, .login-container {
+        margin-top: 30px;
+        margin-left: 0px;
+        text-align: center;
+    }
+    .phone-container i, .login-container i {
+        color: rgb(213, 153, 158);
+        font-size: 38px;
+        transform: rotateY(180deg);
+    }
+    .login-container a, .login-cont a{
+        text-decoration: none;
+        color: black;
+    }
+    /* phone cont, login cont */
+    .phone-cont, .login-cont {
+        justify-content: flex-start;
+    }
+    .phone-cont i, .login-cont i {
+        transform: rotateY(180deg);
+        font-size: 30px;
+        color: rgb(213, 153, 158);
+    }
+    .phone-cont p{
+        display: inline-block;
+    }
+    /* navbar */
+    .navbar {
+        background-color: rgb(247, 205, 204);
+    }
+    .nav-link {
+        color: black;
+    }
+    .navbar-nav a:hover{
+	color: hotpink;
+    }
+    /* breadcrum */
+    .breadcrumb {
+        margin-top: 10px;
+    }
+    .breadcrumb ul, .sort-section ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .breadcrumb li:not(:last-child)::after {
+        content: "/";
+        color: gray;
+        margin: 0 10px;
+    }
+    .breadcrumb a{
+        text-decoration: none;
+        color: black;
+        padding: 5px 5px;
+    }
+    .breadcrumb a:hover {
+        background-color: rgba(231, 197, 200, 0.5);
+        border-radius: 10px;
+    }
+    /* header chăm sóc da */
+    .header-chamsocda h3 {
+        color: rgb(213, 153, 158);
+        font-weight: bold;
+        font-size: 30px;
+        margin: 0 0 20px 20px;
+    }
+    .sort-section a{
+        margin-right: 20px;
+        text-decoration: none;
+        color: black;
+        padding: 5px 5px;
+    }
+    .sort-section li:not(:first-child):hover {
+        border-radius: 5px;
+        background-color: rgba(231, 197, 200, 0.5);
+        margin: 0 10px;
+    }
+    .sort-dropdown, .sort-section {
+        float: inline-end;
+        margin-right: 20px;
+    }
+    /* footer */
+	.footer {
+        background-color: #FABFC0;
+        padding-left: 20px;
+        padding-right: 20px;
+	}
+	.payment-container {
+		display: flex;
+		justify-content: center; 
+		margin-top: 5px; 
+	}
+	.payment-icon {
+		margin: 0 10px; 
+	}
+	.payment-icon img {
+		max-width: 50px; 
+		transition: transform 0.2s; 
+	}
+	.payment-icon img:hover {
+		transform: scale(1.1); 
+	}
+	.infostore a, .policy a {
+		color: black;
+		text-decoration: none;
+	}
+    /* filter-container */
+    .filter-container {
+        position: relative;
+        display: inline-block;
+        font-family: sans-serif;
+        margin-left: 20px;
+        margin-bottom: 20px;
+    }
+    .filter-button, .sort-button {
+        padding: 10px 15px;
+        background-color: #fbd6d6;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 15px;
+    }
+    .filter-button:hover, .sort-button:hover {
+        background-color: #E8A5A5;
+    }
+    .dropdown-content {
+        margin: 5px 0;
+        display: none;
+        position: absolute;
+        min-width: 250px;
+        border: #f4e1e1 1px solid;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        background-color:white;
+    }
+    .dropdown-content.show {
+        display: block;
+    }
+    .divider {
+        height: 1px;
+        background: gray;
+        margin: 20px 0;
+    }
+    .filter-section {
+        padding: 20px 10px;
+    }
+    .filter-section p {
+        font-weight: 600;
+    }
+    .filter-option {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .filter-option:hover {
+        color: #d89393;
+        font-weight: 600;
+    }
+    .apply-button {
+        width: calc(100% - 40px);
+        margin: 15px;
+        padding: 10px;
+        background-color: #fbd6d6;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+    .apply-button:hover {
+        background-color: #E8A5A5;
+        color: black;
+    }
+    /* product listing section */
+    .product-overview {
+        display: flex; 
+        justify-content: center;
+        flex-wrap: wrap; 
+        gap: 20px;
+        padding: 20px;
+    }
+    .product-card {
+        border: 2px solid #ed8d8d; /* Viền màu hồng */
+        border-radius: 15px;
+        background-color: #fff5f5; /* Nền của khung sản phẩm */
+        position: relative;
+        box-shadow: 0px 4px 6.1px #FFB1B2; /* Đổ bóng màu hồng nhạt */
+        text-align: center;
+        margin-bottom: 30px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* Hiệu ứng hover */
+    }
+    .product-img {
+        width: 100%;
+        max-width: 340px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        height: auto;
+        object-fit: cover;
+    }
+    .favorite-button {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background-color: transparent;
+        color: rgb(247, 199, 199);
+		border: none;
+		cursor: pointer;
+	}
+    .favorite-button:hover {
+        color: #f46c6c;
+    }
+    .product-title {
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+    }
+    .product-description {
+      font-size: 14px;
+      color: #777;
+    }
+    .product-price {
+      color: #e30000;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style-type: none;
+        padding: 0;
+    }
+    .pagination li {
+        margin: 0 10px;
+    }
+
+    .pagination a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        border: 2px solid black;
+        border-radius: 50%;
+        font-size: 16px;
+        transition: all 0.3s;
+    }
+
+    .pagination a:hover {
+        background-color: #f0f0f0;
+    }
+
+    .pagination .active {
+        background-color: black;
+        color: white;
+    }
+
+    .pagination .next {
+        border: none;
+        font-size: 18px;
+    }
+</style>
+<link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- banner -->
+            <div class="banner col-12">
+                <img src="https://img.upanh.tv/2024/10/24/BANG-QC-DAU-TRANG-FIGMA-3.png" alt="" class=" img-fluid d-block">
+            </div>
+        </div>
+        <div class="row">
+            <!-- logo -->
+            <div class="col-3 col-md-2">
+                <a href="./home.html">
+					<img src="https://img.upanh.tv/2024/10/24/Logo.png" alt="" class="float-start img-fluid" style="margin-left: 25px; height: 110px;">
+				</a>
+            </div>
+            <!-- search box -->
+            <div class="col-md-4 col-6">
+                <form class="search-wrapper">
+                    <input type="search" placeholder="Tìm kiếm" name="search" class="search-input hide-placeholder">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search text-white"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- contact -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="phone-container">
+                    <i class="fa fa-phone"></i>
+                    <div class="d-none d-xl-inline-block">
+                        <p>Hỗ trợ khách hàng<br>
+                            +1 6506671441</p>
+                    </div>
+                </div>
+            </div>
+            <!-- register/login -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="login-container">
+                    <a href="./register.html"><i class="fa fa-user"></i></a>
+                    <div class="d-none d-xl-inline-block">
+                        <a href="./register.html">Đăng Ký</a>
+                        <a href="./login.html" class="d-block">Đăng Nhập</a>
+                    </div>
+                </div>
+            </div>
+            <!-- cart -->
+            <div class="col-md-2 col-1 py-3">
+                <button id="cartButton" class="btn btn-outline-dark">
+                    <div class="cart-container">
+                        <i class="fa fa-cart-plus mt-2"></i>
+                        <span id="cartCount" class="badge bg-danger position-absolute translate-middle me-5">0</span>
+                        <p class="d-none d-lg-block text-black ms-2 pt-4">Giỏ hàng</p>
+                    </div> 
+                </button>
+                <div id="cartModal" class="modal fade bgmodal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Giỏ hàng của bạn</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="cartItems"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="w-100 d-flex justify-content-between">
+                                <span class="cart-total">Tổng tiền: 0₫</span>
+                                <button id="checkoutButton">Thanh toán</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- navigation bar -->
+            <nav class="navbar navbar-expand-md">
+                <button class="navbar-toggler ms-5 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="text-dark d-none d-xxl-inline">Danh mục sản phẩm</span>
+                </button>
+                <div class="collapse navbar-collapse  ms-5" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <!-- danh mục sản phẩm -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fa fa-bars d-none d-sm-inline-block"></i>
+                                <span>DANH MỤC SẢN PHẨM</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./chamsocda.html">Chăm sóc da</a></li>
+                                <li><a class="dropdown-item" href="./trangdiem.html">Trang điểm</a></li>
+                                <li><a class="dropdown-item" href="./chamsoccothe.html">Chăm sóc cơ thể</a></li>
+                                <li><a class="dropdown-item" href="./moi.html">Môi</a></li>
+                            </ul>
+                        </li>
+                        <!-- các danh mục mở rộng -->
+                        <li class="nav-item">
+							<a class="nav-link" href="./sanphambanchay.html">SẢN PHẨM BÁN CHẠY</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./flashsale.htm">FLASH SALE - CHỚP NHOÁNG</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./home.html#categories7">TIN TỨC & LÀM ĐẸP</a>
+						</li> 
+                        <!-- mở rộng contact - login -->
+                        <li class="nav-item phone-cont d-md-none d-block">
+                            <i class="fa fa-phone"></i>
+                            <p>+1 6506671441</p>
+                        </li>
+                        <li class="nav-item login-cont d-md-none d-block">
+                            <i class="fa fa-user"></i>
+                            <div class="d-inline">
+                                <a href="./register.html">Đăng Ký
+                                    <span style="border-right: 2px solid black;"></span>
+                                </a>
+                                <a href="./login.html">Đăng Nhập</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Breadcrum chamsocda -->
+    <div class="row">
+        <div class="col-12">
+            <nav class="breadcrumb">
+                <ul>
+                    <li><a href="./home.html">Trang chủ</a></li>
+                    <li><a href="#">Danh mục sản phẩm</a></li>
+                    <li><a href="./trangdiem.html">Trang điểm</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <!-- tiêu đề trang -->
+        <div class="col-12 header-chamsocda">
+            <h3>TRANG ĐIỂM</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <div class="filter-container">
+                <button class="filter-button" onclick="toggleDropdown(this)">
+                    Filter 
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <div class="filter-section">
+                        <p>THƯƠNG HIỆU</p>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand1">
+                            <label for="brand1">CHANEL</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand2">
+                            <label for="brand2">DIOR</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand3">
+                            <label for="brand3">YVES SAINT LAURENT (YSL)</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand4">
+                            <label for="brand4">MAC</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="brand5">
+                            <label for="brand5">KHÁC</label>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="filter-section">
+                        <p>GIÁ SẢN PHẨM</p>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price1">
+                            <label for="price1">Giá dưới 100.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price2">
+                            <label for="price2">100.000đ - 200.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price3">
+                            <label for="price3">200.000đ - 300.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price4">
+                            <label for="price4">300.000đ - 500.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price5">
+                            <label for="price5">500.000đ - 1.000.000đ</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="price6">
+                            <label for="price6">Giá trên 1.000.000đ</label>
+                        </div>
+                    </div>
+                    <button class="apply-button">Áp dụng</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="sort-section d-none d-xl-inline">
+                <ul>
+                    <li><a href="#" class="fw-bold">Sắp xếp: </a></li>
+                    <li><a href="#" id="sortPriceAsc">Giá tăng dần</a></li>
+                    <!-- <li><a href="./CSDpage1Giamdan.html">Giá giảm dần</a></li> -->
+                    <li><a href="#" id="sortPriceDesc">Giá giảm dần</a></li>
+                </ul>
+            </div>
+            <div class="sort-dropdown nav-item dropdown d-xl-none d-inline">
+                <a class="nav-link dropdown-toggle sort-button" data-bs-toggle="dropdown" href="#">Sắp xếp: </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Giá tăng dần</a></li>
+                    <li><a class="dropdown-item" href="#">Giá giảm dần</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="product-overview">
+            <div class="col-md-8">
+                <div class="row">
+                    <!-- sản phẩm 1 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/c91cddda-862e-4a26-a059-3e630c088156.webp" class="product-img" alt="THE FACE SHOP">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">THE FACE SHOP</h5>
+                            <p class="product-description">Son Thỏi Bóng Nhẹ THE FACE SHOP Fmgt New Bold Sheer</p> 
+                            <p class="product-price">649.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Son Thỏi Bóng Nhẹ THE FACE SHOP Fmgt New Bold Sheer', 'https://img.upanh.tv/2024/11/21/c91cddda-862e-4a26-a059-3e630c088156.webp', 649000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 2 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/e0727b8f-4ae9-48e7-b441-f032930512aa.webp" class="product-img" alt="LEMONADE">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">LEMONADE</h5>
+                            <p class="product-description">Phấn Nước Lâu Trôi Lemonade Matte Addict Cushion 15g</p> 
+                            <p class="product-price">314.100<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Nước Lâu Trôi Lemonade Matte Addict Cushion 15g', 'https://img.upanh.tv/2024/11/21/e0727b8f-4ae9-48e7-b441-f032930512aa.webp', 314100)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 3 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/34f20bff-77da-4dfe-bd6d-90b085c1e460.webp" class="product-img" alt="VACOSI">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">VACOSI</h5>
+                            <p class="product-description">Cọ Che Khuyết Điểm Vacosi Concealer Brush (F09)</p> 
+                            <p class="product-price">54.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Cọ Che Khuyết Điểm Vacosi Concealer Brush (F09)', 'https://img.upanh.tv/2024/11/21/34f20bff-77da-4dfe-bd6d-90b085c1e460.webp', 54000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 4 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/05e6637e-0913-4f91-a3e0-b787e07118ce.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Chì Kẻ Viền Mắt Clio Sharp So Simple Waterproof Pencil Liner</p> 
+                            <p class="product-price">199.200<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Chì Kẻ Viền Mắt Clio Sharp So Simple Waterproof Pencil Liner', 'https://img.upanh.tv/2024/11/21/05e6637e-0913-4f91-a3e0-b787e07118ce.webp', 199200)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 5 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/7040d3a1-92ef-4d96-a99d-9bdeb1684650.webp" class="product-img" alt="DEAR DAHLIA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">DEAR DAHLIA</h5>
+                            <p class="product-description">Cọ Tạo Khối Dear Dahlia Contour Dual Brush</p> 
+                            <p class="product-price">279.200<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Cọ Tạo Khối Dear Dahlia Contour Dual Brush', 'https://img.upanh.tv/2024/11/21/7040d3a1-92ef-4d96-a99d-9bdeb1684650.webp', 279200)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 6 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/ad2d0dee-ce90-43b4-aa5d-a02c9744a70a.webp" class="product-img" alt="KLAVUU">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">KLAVUU</h5>
+                            <p class="product-description">Nhũ Mắt Lấp Lánh Klavuu Urban Pearlsation Sparkle Eyeshadow</p> 
+                            <p class="product-price">259.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Nhũ Mắt Lấp Lánh Klavuu Urban Pearlsation Sparkle Eyeshadow', 'https://img.upanh.tv/2024/11/21/ad2d0dee-ce90-43b4-aa5d-a02c9744a70a.webp', 259000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 7 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/709d81da-cb66-42d5-8a96-6b5c3cb91d7a.webp" class="product-img" alt="DEAR DAHLIA">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">DEAR DAHLIA</h5>
+                            <p class="product-description">Cọ Phấn Má Hồng & Phấn Phủ Blooming Edition Pro</p> 
+                            <p class="product-price">426.300<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Cọ Phấn Má Hồng & Phấn Phủ Blooming Edition Pro', 'https://img.upanh.tv/2024/11/21/709d81da-cb66-42d5-8a96-6b5c3cb91d7a.webp', 426300)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 8 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/760cbce5-1396-4ff7-bce9-cc060e1499f7.webp" class="product-img" alt="FRESHIAN">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">FRESHIAN</h5>
+                            <p class="product-description">Kem Nền Cho Da Khô Freshian Thuần Chay Căng Bóng Che Phủ</p> 
+                            <p class="product-price">829.000<sup>đ</sup> </p>
+                            <button class="button-addtocart" onclick="addToCart('Kem Nền Cho Da Khô Freshian Thuần Chay Căng Bóng Che Phủ', 'https://img.upanh.tv/2024/11/21/760cbce5-1396-4ff7-bce9-cc060e1499f7.webp', 829000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 9 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/50500982-06ef-4b44-a9b2-7eec7becf60b.webp" class="product-img" alt="M.O.I">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">M.O.I</h5>
+                            <p class="product-description">Má Hồng Dạng Kem M.O.I 2 Màu Dual Cream Blusher 8g</p> 
+                            <p class="product-price">429.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Má Hồng Dạng Kem M.O.I 2 Màu Dual Cream Blusher 8g', 'https://img.upanh.tv/2024/11/21/50500982-06ef-4b44-a9b2-7eec7becf60b.webp', 429000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 10 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/34e83a13-995d-4129-9a3e-4a57c6b09f1e.webp" class="product-img" alt="CNC">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">CNC</h5>
+                            <p class="product-description">Son Dưỡng Môi Keo Ong CNP Cấp Khóa Ẩm 12h Propolis</p> 
+                            <p class="product-price">450.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Son Dưỡng Môi Keo Ong CNP Cấp Khóa Ẩm 12h Propolis', 'https://img.upanh.tv/2024/11/21/34e83a13-995d-4129-9a3e-4a57c6b09f1e.webp', 450000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>
+                    </div>
+
+                    <!-- sản phẩm 11 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/18c9aa6c-5496-42a8-8d3b-b455eb7a33dc.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Bút Kẻ Mắt Nước Clio Sharp So Simple Shade</p>
+                            <p class="product-price">240.500<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Bút Kẻ Mắt Nước Clio Sharp So Simple Shade', 'https://img.upanh.tv/2024/11/21/18c9aa6c-5496-42a8-8d3b-b455eb7a33dc.webp', 240500)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 12 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/964f5289-a75c-4c14-9882-617aa429c72f.webp" class="product-img" alt="VACOSI">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">VACOSI</h5>
+                            <p class="product-description">Bông Trang Điểm Giọt Nước Vacosi Prs Pro Classic Blender</p> 
+                            <p class="product-price">57.600<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Bông Trang Điểm Giọt Nước Vacosi Prs Pro Classic Blender', 'https://img.upanh.tv/2024/11/21/964f5289-a75c-4c14-9882-617aa429c72f.webp', 57600)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 13 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/586e7131-2660-4a33-a502-0283d4d3ed0a.webp" class="product-img" alt="VACOSI">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">VACOSI</h5>
+                            <p class="product-description">Cọ Nhấn Đuôi Mắt Vacosi Smudge Pro</p> 
+                            <p class="product-price">58.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Cọ Nhấn Đuôi Mắt Vacosi Smudge Pro', 'https://img.upanh.tv/2024/11/21/586e7131-2660-4a33-a502-0283d4d3ed0a.webp', 58000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 14 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/b95be780-ff9d-40c1-9231-58478a7beaba.webp" class="product-img" alt="VACOSI">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">VACOSI</h5>
+                            <p class="product-description">Bông Phấn Khô Tròn Nhỏ Vacosi Small Round Puff 2Pcs</p> 
+                            <p class="product-price">19.580<sup>đ</sup> </p>
+                            <button class="button-addtocart" onclick="addToCart('Bông Phấn Khô Tròn Nhỏ Vacosi Small Round Puff 2Pcs', 'https://img.upanh.tv/2024/11/21/b95be780-ff9d-40c1-9231-58478a7beaba.webp', 19580)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 15 -->
+                    <div class="col-md-6 col-lg-3  mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/a9857721-5ddb-468c-9dcf-5bd330c8a925.webp" class="product-img" alt="VACOSI">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">VACOSI</h5>
+                            <p class="product-description">Cọ Phấn Và Má Hồng Đầu Tròn Xòe Vacosi Angle Powder Pro</p> 
+                            <p class="product-price">99.000<sup>đ</sup> </p>
+                            <button class="button-addtocart" onclick="addToCart('Cọ Phấn Và Má Hồng Đầu Tròn Xòe Vacosi Angle Powder Pro', 'https://img.upanh.tv/2024/11/21/a9857721-5ddb-468c-9dcf-5bd330c8a925.webp', 99000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 16 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/7628365f-6d36-461a-9c46-4c898a9851bb.webp" class="product-img" alt="MAYBELLINE">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">MAYBELLINE</h5>
+                            <p class="product-description">Phấn Má Hồng Maybelline Fit Me Mono Blush 4.5g</p> 
+                            <p class="product-price">178.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Phấn Má Hồng Maybelline Fit Me Mono Blush 4.5g', 'https://img.upanh.tv/2024/11/21/7628365f-6d36-461a-9c46-4c898a9851bb.webp', 178000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 17 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/debe05e6-b0b8-4dd9-99e6-c31f3e01c7da.webp" class="product-img" alt="REAL TECHNIQUES">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">REAL TECHNIQUES</h5>
+                            <p class="product-description">Bông Mút Tán Phấn Real Techniques Miracle Powder</p> 
+                            <p class="product-price">150.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Bông Mút Tán Phấn Real Techniques Miracle Powder', 'https://img.upanh.tv/2024/11/21/debe05e6-b0b8-4dd9-99e6-c31f3e01c7da.webp', 150000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 18 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/d3fade54-ec4b-4816-a327-1e326f14e794.webp" class="product-img" alt="VACOSI">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">VACOSI</h5>
+                            <p class="product-description">Cọ Nền Vát Chéo Vacosi Finger Foundation</p> 
+                            <p class="product-price">80.100<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Cọ Nền Vát Chéo Vacosi Finger Foundation', 'https://img.upanh.tv/2024/11/21/d3fade54-ec4b-4816-a327-1e326f14e794.webp', 80100)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 19 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/c6d2fbfd-b088-487f-bc84-91d981e9868d.webp" class="product-img" alt="CLUB CLIO">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">CLUB CLIO</h5>
+                            <p class="product-description">Bông Mút Trang Điểm Clio 6 Góc Cạnh Kill Cover Skin Fixer</p> 
+                            <p class="product-price">49.000<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Bông Mút Trang Điểm Clio 6 Góc Cạnh Kill Cover Skin Fixer', 'https://img.upanh.tv/2024/11/21/c6d2fbfd-b088-487f-bc84-91d981e9868d.webp', 49000)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                    <!-- sản phẩm 20 -->
+                    <div class="col-md-6 col-lg-3 mt-sm-5 mt-lg-3">
+                        <div class="product-card">
+                            <img src="https://img.upanh.tv/2024/11/21/3de79e3b-87cf-4f98-8acc-99fe95628f37.webp" class="product-img" alt="LEMONADE">
+                            <!-- Nút trái tim yêu thích -->
+                            <button type="button" class="favorite-button">
+                                <i class="fa fa-heart"></i>
+                            </button>													
+                            <h5 class="product-title">LEMONADE</h5>
+                            <p class="product-description">Má Hồng Lemonade Dạng Kem Thuần Chay Perfect Couple</p> 
+                            <p class="product-price">215.100<sup>đ</sup></p>
+                            <button class="button-addtocart" onclick="addToCart('Má Hồng Lemonade Dạng Kem Thuần Chay Perfect Couple', 'https://img.upanh.tv/2024/11/21/3de79e3b-87cf-4f98-8acc-99fe95628f37.webp', 215100)">
+                                <i class="fa fa-cart-plus"></i>
+                                THÊM VÀO GIỎ HÀNG
+                            </button>
+                            <p class="mt-2">★★★★★</p>
+                        </div>	
+                    </div>
+
+                </div>
+                <ul class="pagination">
+                    <li><a href="./trangdiem.html">1</a></li>
+                    <li><a href="./trangdiem2.html">2</a></li>
+                    <li><a href="./trangdiem3.html" class="active">3</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> <!--Filter-->
+	<section class="myfooter">
+		<div class="footer">
+			<!-- heading footer -->
+			<div class="row">
+				<div class="col-md-6 col-12">
+					<div class="notification mt-4">
+						<h2 class="text-center">ĐĂNG KÝ NHẬN THÔNG BÁO</h2>
+						<p class="text-center">Chương trình khuyến mãi | Hợp tác kinh doanh</p>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<form class="email-field mb-md-0 mb-4">
+						<input type="email" placeholder="Nhập e-mail của bạn..." class="email-input">
+						<button type="email" class="submit-button">GỬI</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 infostore">
+					<h5>Thông tin cửa hàng</h5>
+					<ul class="list-unstyled">
+						<li><a href="./home.html">Trang chủ</a></li>
+						<li><a href="#">Thông tin</a></li>
+						<li><a href="#">Tuyển dụng</a></li>
+						<li><a href="#">Về GNT</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 policy  mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Chính sách</h5>
+					<ul class="list-unstyled">
+						<li><a href="#">Phương thức vận chuyển</a></li>
+						<li><a href="#">Chính sách đổi trả</a></li>
+						<li><a href="#">Hỗ trợ khách hàng</a></li>
+						<li><a href="#">Chính sách bảo mật</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3  mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Thông tin liên hệ</h5>
+					<p><i class="fas fa-phone-alt mr-2"></i> 0868 307 030</p>
+					<p><i class="fas fa-clock mr-2"></i> 08:30 - 21:30 (T2-T7)</p>
+					<h5>Kết nối với chúng tôi</h5>
+					<div>
+						<i class="fab fa-facebook mr-2"></i>
+						<i class="fab fa-instagram mr-2"></i>
+						<i class="fab fa-tiktok mr-2"></i>
+					</div>
+	
+				</div>
+				<div class="col-lg-3 col-md-6 col-12 mt-4 mb-4 mt-md-0 mb-md-0">
+					<h5>Hệ thống cửa hàng</h5>
+					<p>Chi nhánh 1: 470 Trần Đại Nghĩa, Ngũ Hành Sơn, TP. Đà Nẵng</p>
+					<p>Chi nhánh 2: 290 Phạm Ngũ Lão, Phú Hội, TP. Huế</p>
+				</div>
+			</div>
+			<div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-center">PHƯƠNG THỨC THANH TOÁN</h5>
+                    <div class="text-center">
+                        <div class="container text-center mt-3">
+                            <div class="justify-content-center mt-4">
+                                <div class="d-flex justify-content-center payment-container">
+                                    <a href="https://www.visa.com.vn/vi_VN/pay-with-visa/featured-technologies/mobile-payments.html" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/VISA-Logo-1976.png" alt="Visa Payment" class="img-fluid" style="max-width: 80px;">
+                                    </a>
+                                    <a href="https://developers.momo.vn/v3/vi/docs/payment/guides/payment-with-aio/" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/mom.jpg" alt="MoMo Payment" class="img-fluid"  style="width: 40px;">
+                                    </a>
+                                    <a href="https://vivnpay.vn/blog/vnpayqr-vi-vnpay" target="_blank" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/vnpay.png" alt="VNPay Payment" class="img-fluid"  style="width: 40px;">
+                                    </a>
+                                    <a href="https://zalopay.vn/" target="_blank" class="payment-icon">
+                                        <img src="https://img.upanh.tv/2024/10/30/Logo-ZaloPay-Square.jpg" alt="ZaloPay Payment" class="img-fluid" style="width: 40px;">
+                                    </a>
+                                    <a href="https://ghn.vn/" target="_blank" class="payment-icon" style="margin-top: -12px">
+                                        <img src="https://img.upanh.tv/2024/11/26/Logo-GHN-Orange.webp?fbclid=IwY2xjawGydJdleHRuA2FlbQIxMAABHVDd1i3r_hU6MLHztyuS8qY2-bJ5YRG9bJD3_c4ZtwsQuZ4edsM575VIXA_aem_Cr4WcULiY3KHxxwzT3CofA" alt="GHN" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+            </div>			
+			<div class="row">
+				<div class="text-center mt-4 border-top border-dark">
+					<p class="pt-4 pt-lg-5">© Bản quyền thuộc công ty G.N.T COSMETICS | Cung cấp bởi Sapo</p>
+				</div>
+			</div>
+		</div>
+	</section> <!--footer-->
+<script src="./js/main.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script>
+    function toggleDropdown(button) {
+    button.classList.toggle('active');
+    button.nextElementSibling.classList.toggle('show');
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function closeDropdown(e) {
+        if (!button.contains(e.target) && !button.nextElementSibling.contains(e.target)) {
+            button.classList.remove('active');
+            button.nextElementSibling.classList.remove('show');
+            document.removeEventListener('click', closeDropdown);
+        }
+    });
+}
+</script>
+<script src="./script2.js"></script>
+</body>
+</html>

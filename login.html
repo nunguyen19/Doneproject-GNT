@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Login Page</title>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .banner {
+        background-color: rgb(241, 218, 217);
+        max-width: 100%;
+    }
+    /* search */
+    .search-wrapper {
+        position: relative;
+        margin-top: 30px;
+        margin-left: 15px;
+        border-radius: 30px;
+        overflow: hidden;
+        height: 43px;
+        border: 2px solid rgb(210, 115, 113)
+    }
+    .search-input {
+        border: none;
+        padding: 5px 10px;
+        font-size: 20px;
+        color: #666;
+        width: 100%;
+    }
+    .search-input:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .search-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border: none;
+        background-color: #E8A5A5;
+        padding: 0 30px;
+        transition: background-color 0.3s;
+    }
+    .search-button:hover {
+        background-color: #d89393;
+    }
+    .search-icon {
+        color: white;
+        font-size: 15px;
+    }
+        @media (max-width: 500px) {
+            .hide-placeholder::placeholder {
+                color: transparent;
+            }
+        }
+    /* phonecontainer, login container */
+    .phone-container, .login-container {
+        margin-top: 30px;
+        margin-left: 0px;
+        text-align: center;
+    }
+    .phone-container i, .login-container i {
+        color: rgb(213, 153, 158);
+        font-size: 38px;
+        transform: rotateY(180deg);
+    }
+    .login-container a, .login-cont a{
+        text-decoration: none;
+        color: black;
+    }
+    /* phone cont, login cont */
+    .phone-cont, .login-cont {
+        justify-content: flex-start;
+    }
+    .phone-cont i, .login-cont i {
+        transform: rotateY(180deg);
+        font-size: 30px;
+        color: rgb(213, 153, 158);
+    }
+    .phone-cont p{
+        display: inline-block;
+    }
+    /* navbar */
+    .navbar {
+        background-color: rgb(247, 205, 204);
+    }
+    .nav-link {
+        color: black;
+    }
+    .navbar-nav a:hover{
+	color: hotpink;
+    }
+    /* wrapper login */
+    #wrapper-login{
+        margin-top: 50px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-login h1{
+        color: #d89393;
+    }
+    .form-login input{
+        height: 50px;
+        width: 350px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 2px solid rgb(241, 218, 217);
+        padding-left: 10px;
+    }
+    .form-login button {
+        height: 50px;
+        width: 200px;
+        border-radius: 15px;
+        border: none;
+        background-color: rgb(241, 218, 217);
+        color: white;
+    }
+    .form-login button:hover {
+        background-color: #d89393;
+    }
+    form:has(input:valid) #login-button:disabled {
+        pointer-events: none;
+    }
+</style>
+<link rel="stylesheet" href="./cart.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- banner -->
+            <div class="banner col-12">
+                <img src="https://img.upanh.tv/2024/10/24/BANG-QC-DAU-TRANG-FIGMA-3.png" alt="" class=" img-fluid d-block">
+            </div>
+        </div>
+        <div class="row">
+            <!-- logo -->
+            <div class="col-3 col-md-2">
+                <a href="./home.html">
+					<img src="https://img.upanh.tv/2024/10/24/Logo.png" alt="" class="float-start img-fluid" style="margin-left: 25px; height: 110px;">
+				</a>
+            </div>
+            <!-- search box -->
+            <div class="col-md-4 col-6">
+                <form class="search-wrapper">
+                    <input type="search" placeholder="Tìm kiếm" name="search" class="search-input hide-placeholder">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search text-white"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- contact -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="phone-container">
+                    <i class="fa fa-phone"></i>
+                    <div class="d-none d-xl-inline-block">
+                        <p>Hỗ trợ khách hàng<br>
+                            +1 6506671441</p>
+                    </div>
+                </div>
+            </div>
+            <!-- register/login -->
+            <div class="col-md-2 col-1 d-none d-md-block">
+                <div class="login-container">
+                    <a href="./register.html"><i class="fa fa-user"></i></a>
+                    <div class="d-none d-xl-inline-block">
+                        <a href="./register.html">Đăng Ký</a>
+                        <a href="./login.html" class="d-block">Đăng Nhập</a>
+                    </div>
+                </div>
+            </div>
+            <!-- cart -->
+            <div class="col-md-2 col-1 py-3">
+                <button id="cartButton" class="btn btn-outline-dark">
+                    <div class="cart-container">
+                        <i class="fa fa-cart-plus mt-2"></i>
+                        <span id="cartCount" class="badge bg-danger position-absolute translate-middle me-5">0</span>
+                        <p class="d-none d-lg-block text-black ms-2 pt-4">Giỏ hàng</p>
+                    </div> 
+                </button>
+                <div id="cartModal" class="modal fade bgmodal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Giỏ hàng của bạn</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="cartItems"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="w-100 d-flex justify-content-between">
+                                <span class="cart-total">Tổng tiền: 0₫</span>
+                                <button id="checkoutButton">Thanh toán</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- navigation bar -->
+            <nav class="navbar navbar-expand-md">
+                <button class="navbar-toggler ms-5 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                    <span class="text-dark d-none d-xxl-inline">Danh mục sản phẩm</span>
+                </button>
+                <div class="collapse navbar-collapse  ms-5" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <!-- danh mục sản phẩm -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown">
+                                <i class="fa fa-bars d-none d-sm-inline-block"></i>
+                                <span>DANH MỤC SẢN PHẨM</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./chamsocda.html">Chăm sóc da</a></li>
+                                <li><a class="dropdown-item" href="./trangdiem.html">Trang điểm</a></li>
+                                <li><a class="dropdown-item" href="./chamsoccothe.html">Chăm sóc cơ thể</a></li>
+                                <li><a class="dropdown-item" href="./moi.html">Môi</a></li>
+                            </ul>
+                        </li>
+                        <!-- các danh mục mở rộng -->
+                        <li class="nav-item">
+							<a class="nav-link" href="./sanphambanchay.html">SẢN PHẨM BÁN CHẠY</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./flashsale.htm">FLASH SALE - CHỚP NHOÁNG</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="./home.html#categories7">TIN TỨC & LÀM ĐẸP</a>
+						</li> 
+                        <!-- mở rộng contact - login -->
+                        <li class="nav-item phone-cont d-md-none d-block">
+                            <i class="fa fa-phone"></i>
+                            <p>+1 6506671441</p>
+                        </li>
+                        <li class="nav-item login-cont d-md-none d-block">
+                            <i class="fa fa-user"></i>
+                            <div class="d-inline">
+                                <a href="./register.html">Đăng Ký
+                                    <span style="border-right: 2px solid black;"></span>
+                                </a>
+                                <a href="./login.html">Đăng Nhập</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- form login -->
+        <div class="col-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4" id="wrapper-login" >
+            <form action="" class="form-login">
+                <h1 class="form-heading">Đăng Nhập</h1>
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Tên đăng nhập" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" minlength="8" class="form-input" placeholder="Mật khẩu" required>                       
+                </div>
+                <button type="submit" id="login-button">Đăng Nhập</button>
+            </form>
+        </div>
+    </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+<script src="./script2.js"></script>
+</body>
+</html>
